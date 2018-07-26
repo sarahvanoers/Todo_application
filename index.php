@@ -21,7 +21,6 @@
     <div id="whiteBgLogin" .shadow-* >
     <div class="container">
     <form method="POST">
-    <h1 class="logo">To Do app</h1>
     <h1 class="tekstRegister">Hello you, Welcome back! Sign in.</h1>
         <div class="form-group">
             <label for="exampleInputEmail1"></label>
