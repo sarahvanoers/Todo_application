@@ -19,7 +19,7 @@
     <div id="whiteBg">
     <div class="container">
         <form method="POST" class="form">
-            <h2 class="teksRegister">Hello you,<br> Sign up.</h2>
+            <h2 class="tekstRegister">Hello you,<br> Sign up.</h2>
             
             <div class="form-group">
                 <label for="exampleInput"></label>
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" id="register" value="Let's get started!"> <br>
-                <a id="registerLink" href="login.php">Oh, I already have one!</a>
+                <a class="registerLink" href="index.php">Oh, I already have one!</a>
             </div>
         </form>
     </div>

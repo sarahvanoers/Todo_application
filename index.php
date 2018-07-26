@@ -21,7 +21,7 @@
     <div id="whiteBgLogin" .shadow-* >
     <div class="container">
     <form method="POST">
-    <h1 class="tekstRegister">Hello you, Welcome back! Sign in.</h1>
+    <h1 class="tekstRegister">Hello you, <br> Welcome back! Sign in.</h1>
         <div class="form-group">
             <label for="exampleInputEmail1"></label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
@@ -37,7 +37,7 @@
         <?php endif;?>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" id="register" value="Let's get started!"><br>
-            <a id="loginLink" href="register.php">I'm new here, sign me in!</a>
+            <a class="loginLink" href="register.php">I'm new here, sign me in!</a>
         </div>
     </form>
     </div>

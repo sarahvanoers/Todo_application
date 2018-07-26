@@ -1,10 +1,48 @@
 /*
 COLORS
-
+RED: #ed7669
 GREEN: #7cbe7f
 BLUE: #85c9db
 YELLOW: #f6c78f
-GREY: 7d797b
+GREY: #7d797b
 
 
 */
+/*
+-------------------------------
+        LOGIN
+-------------------------------
+*/
+
+
+.tekstRegister {
+    color: #85c9db;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+#exampleInputEmail1 {
+    width: 60%;
+}
+#exampleInput {
+    width: 60%;
+}
+#exampleInputPassword1 {
+    width: 60%;
+}
+#exampleInputPasswordConfirmation1 {
+    width: 60%;
+}
+
+#register {
+    background-color: #85c9db;
+    border: none;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+#register:hover {
+    background-color:#9dbfcc;
+}
+a{
+    margin-top: 4%;
+    color: #ed7669;
+}
