@@ -1,4 +1,37 @@
-<html lang="en">
+<?php
+
+    include_once("classes/User.class.php");
+
+    $error = "";
+
+    if ( !empty($_POST) ) {
+        $error = "";
+        $email = $_POST['email'];
+
+        if (User::UserExists($email) == true) {
+            
+        if ($_POST['password'] == $_POST['passwordRepaet'] ) {
+
+        }    
+            $user = new User();
+            $user->setFirstname($_POST ['firstname'] );
+            $user->setLastName($_POST ['lastname'] );
+            $user->setEmail($_POST ['email'] );
+            $user->setEmail($_POST ['password'] );
+
+            if (empty ($_POST['firstname']) ) {
+                $error = "";
+            }
+            else if (empty ($_POST['lastname']) ) {
+                $error = "";
+            }
+            else {
+                $error = "That emailadress is already being used.";
+            }
+            
+        }
+    }
+?><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +68,12 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Your password" name ="password">
 
                 <label for="exampleInputPasswordConfirmation1"></label>
-                <input type="password" class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Repeat password" name ="password_confirmation">
+                <input type="password" class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Repeat password" name ="passwordRepaet">
+            </div>
+            <div class="form-group error">
+                <p>
+                   <php echo $error; ?>
+                </p>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" id="register" value="Let's get started!"> <br>

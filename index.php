@@ -1,4 +1,6 @@
-<html lang="en">
+<?php
+
+?><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,13 +30,11 @@
         </div>
             <label for="exampleInputPassword1"></label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-        <?php if( isset($error) ): ?>
-            <div class="form-group">
+            <div class="form-group error">
                 <p>
-                    Sorry, we can't log you in with that email address and password. Can you try again?
+                   <php echo $error; ?>
                 </p>
             </div>
-        <?php endif;?>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" id="register" value="Let's get started!"><br>
             <a class="loginLink" href="register.php">I'm new here, sign me in!</a>
