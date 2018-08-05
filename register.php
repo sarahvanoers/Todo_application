@@ -9,15 +9,17 @@
         $email = $_POST['email'];
 
         if (User::checkUser($email) == true) {
-            
+        
+            var_dump(User::checkUser($email));
+
         if ($_POST['password'] == $_POST['passwordRepaet'] ) {
 
         }    
             $user = new User();
-            $user->setFirstname($_POST ['firstname'] );
-            $user->setLastName($_POST ['lastname'] );
-            $user->setEmail($_POST ['email'] );
-            $user->setEmail($_POST ['password'] );
+            $user->setFirstname($_POST['firstname']);
+            $user->setLastName($_POST['lastname']);
+            $user->setEmail($_POST['email']);
+            $user->setEmail($_POST['password']);
 
             if (empty ($_POST['firstname']) ) {
                 $error = "Give your firstname please.";

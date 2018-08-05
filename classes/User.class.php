@@ -67,13 +67,13 @@
             return $result;
         }
 
-        public function checkUser($email) {
+        public static function checkUser($email) {
             $conn = Db::GetInstance();
             
             $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
             $statement->bindValue(":email", $email);
 
-            $result = $statement->execute();
+            $statement->execute();
 
             if($statement->rowCount()>=1) {
                 return false;
