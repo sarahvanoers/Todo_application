@@ -50,7 +50,9 @@
 
                 return $this;
         }
-
+        // -----------------------------------
+        // ------- REGISTER ------------------
+        // -----------------------------------
         public function register() {
             $conn = Db::GetInstance();
 
@@ -65,16 +67,25 @@
             return $result;
         }
 
-        public function userExists($email) {
+        public function checkUser($email) {
             $conn = Db::GetInstance();
             
             $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
-            $statement->bindParam(':email', email);
+            $statement->bindValue(":email", $email);
 
             $result = $statement->execute();
+
+            if($statement->rowCount()>=1) {
+                return false;
+            }
+            else {
+                return true;   
+            }
         }
 
-
+        // -----------------------------------
+        // ------- LOGIN ------------------
+        // -----------------------------------
         public function login() {
             session_start();
             $_SESSION['loggedin'] = true;
@@ -91,7 +102,9 @@
             $result = $statement->execute();
 
             $user = $result->fetch(PDO::FETCH_ASSOC);
-            
+            // --------------------------------------
+            // PASSWORD VERIFY
+            // --------------------------------------
             $hash = $user['password'];
             if (password_verify($password, $hash)) {
                     return true;

@@ -8,7 +8,7 @@
         $error = "";
         $email = $_POST['email'];
 
-        if (User::UserExists($email) == true) {
+        if (User::checkUser($email) == true) {
             
         if ($_POST['password'] == $_POST['passwordRepaet'] ) {
 
@@ -20,10 +20,10 @@
             $user->setEmail($_POST ['password'] );
 
             if (empty ($_POST['firstname']) ) {
-                $error = "";
+                $error = "Give your firstname please.";
             }
             else if (empty ($_POST['lastname']) ) {
-                $error = "";
+                $error = "Give your lastname please.";
             }
             else {
                 $error = "That emailadress is already being used.";
