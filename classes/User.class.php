@@ -1,5 +1,5 @@
 <?php
-    include_once ('Db.class.php');
+    include_once ("Db.class.php");
 
     class User{
         private $firstname;
@@ -56,15 +56,22 @@
         public function register() {
             $conn = Db::GetInstance();
 
-            $statement = $conn->prepare("INSERT INTO users(firstname,lastname,email,password) VALUES (:firstname, :lastname, :email, :password)");
+
+            $statement = $conn->prepare("insert into users (firstname,lastname,email,password) values (:firstname, :lastname, :email, :password)");
+             // --------------------------------------
+            // HASHING PASSWORD BCRIPT 
+            // --------------------------------------
+
+            $hash = password_hash($this->password, PASSWORD_BCRYPT);
+            
             $statement->bindParam(':firstname', $this->firstname);
             $statement->bindParam(':lastname', $this->lastname);
             $statement->bindParam(':email', $this->email);
-            $statement->bindParam(':password', $this->password);
+            $statement->bindParam(":password", $hash);
 
-            $result = $statement->execute();
+            $statement->execute();
 
-            return $result;
+            return $statement;
         }
 
         public static function checkUser($email) {
@@ -74,18 +81,19 @@
             $statement->bindValue(":email", $email);
 
             $statement->execute();
-
+            
             if($statement->rowCount()>=1) {
                 return false;
             }
             else {
                 return true;   
             }
+            
         }
-
         // -----------------------------------
         // ------- LOGIN ------------------
         // -----------------------------------
+       
         public function login() {
             session_start();
             $_SESSION['loggedin'] = true;
@@ -113,5 +121,6 @@
                     return false;
                 }
         }
+  
     }
 ?>

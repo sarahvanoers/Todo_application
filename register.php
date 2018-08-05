@@ -1,5 +1,4 @@
 <?php
-
     include_once("classes/User.class.php");
 
     $error = "";
@@ -10,16 +9,16 @@
 
         if (User::checkUser($email) == true) {
         
-            var_dump(User::checkUser($email));
+            //var_dump(User::checkUser($email));
+            //var_dump($statement->rowCount());
 
         if ($_POST['password'] == $_POST['passwordRepaet'] ) {
 
-        }    
             $user = new User();
             $user->setFirstname($_POST['firstname']);
             $user->setLastName($_POST['lastname']);
             $user->setEmail($_POST['email']);
-            $user->setEmail($_POST['password']);
+            $user->setPassword($_POST['password']);
 
             if (empty ($_POST['firstname']) ) {
                 $error = "Give your firstname please.";
@@ -28,9 +27,14 @@
                 $error = "Give your lastname please.";
             }
             else {
-                $error = "That emailadress is already being used.";
+                if($user->register() ) {
+                    $user->login();
+                } 
+                else {
+                    $error = "That emailadress is already being used.";
+                }
             }
-            
+        }      
         }
     }
 ?><html lang="en">
