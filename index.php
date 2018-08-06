@@ -1,5 +1,29 @@
 <?php
+    include_once("classes/User.class.php");
 
+    $error = "";
+
+    if (!empty($_POST) ) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $user = new User();
+        $user = setEmail($email);
+        $user = setPassword($password);
+
+        if ($user->canILogin() ) {
+            $user->login();
+        }
+        else {
+            $error = "";
+        }
+        if (empty ($_POST['email']) ) {
+            $error = "";
+        }
+        else if (empty ($_POST['passowrd']) ) {
+            $error = "";
+        }
+    }
 ?><html lang="en">
 <head>
     <meta charset="UTF-8">

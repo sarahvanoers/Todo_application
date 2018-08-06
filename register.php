@@ -8,11 +8,9 @@
         $email = $_POST['email'];
 
         if (User::checkUser($email) == true) {
-        
-            //var_dump(User::checkUser($email));
-            //var_dump($statement->rowCount());
 
-        if ($_POST['password'] == $_POST['passwordRepaet'] ) {
+        // als de twee ww overéén komen wordt er een nieuwe user aangemaakt.
+        if ($_POST['password'] == $_POST['passwordRepeat'] ) {
 
             $user = new User();
             $user->setFirstname($_POST['firstname']);
@@ -74,7 +72,7 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Your password" name ="password">
 
                 <label for="exampleInputPasswordConfirmation1"></label>
-                <input type="password" class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Repeat password" name ="passwordRepaet">
+                <input type="password" class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Repeat password" name ="passwordRepeat">
             </div>
             <div class="form-group error">
                 <p>

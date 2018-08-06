@@ -90,7 +90,7 @@
             
         }
         // -----------------------------------
-        // ------- LOGIN ------------------
+        // ------- LOGIN ---------------------
         // -----------------------------------
        
         public function login() {
@@ -100,6 +100,7 @@
             
             header('Location: home.php');
         }
+        
         public static function canILogin($email, $password) {
             $conn = Db::GetInstance();
             
