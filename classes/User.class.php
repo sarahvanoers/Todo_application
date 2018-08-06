@@ -56,9 +56,8 @@
         public function register() {
             $conn = Db::GetInstance();
 
-
             $statement = $conn->prepare("insert into users (firstname,lastname,email,password) values (:firstname, :lastname, :email, :password)");
-             // --------------------------------------
+            // --------------------------------------
             // HASHING PASSWORD BCRIPT 
             // --------------------------------------
 
@@ -97,7 +96,7 @@
         public function login() {
             session_start();
             $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $this->email;
+            $_SESSION['user'] = $this->email;
             
             header('Location: home.php');
         }
@@ -110,6 +109,7 @@
             $result = $statement->execute();
 
             $user = $result->fetch(PDO::FETCH_ASSOC);
+
             // --------------------------------------
             // PASSWORD VERIFY
             // --------------------------------------
