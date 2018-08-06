@@ -46,7 +46,7 @@
         }
         public function setPassword($password)
         {
-            if (strln($password) < 5) {
+            if (strlen($password) < 5) {
                  throw new exception ("Password must be at least 8 characters long.");
             }
                 $this->password = $password;
