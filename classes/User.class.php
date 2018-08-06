@@ -101,21 +101,22 @@
             header('Location: home.php');
         }
         
-        public static function canILogin($email, $password) {
+        public function canILogin() {
             $conn = Db::GetInstance();
             
             $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
             $statement->bindParam(':email', $this->email);
 
-            $result = $statement->execute();
+            $statement->execute();
 
-            $user = $result->fetch(PDO::FETCH_ASSOC);
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
 
             // --------------------------------------
             // PASSWORD VERIFY
             // --------------------------------------
             $hash = $user['password'];
-            if (password_verify($password, $hash)) {
+            $password = $this->getPassword();
+            if (password_verify($password, $hash) ) {
                     return true;
                 }
                 else {

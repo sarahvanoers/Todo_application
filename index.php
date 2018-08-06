@@ -8,14 +8,14 @@
         $password = $_POST['password'];
 
         $user = new User();
-        $user = setEmail($email);
-        $user = setPassword($password);
+        $user->setEmail($email);
+        $user->setPassword($password);
 
         if ($user->canILogin() ) {
             $user->login();
         }
         else {
-            $error = "";
+            $error = "sorry";
         }
         if (empty ($_POST['email']) ) {
             $error = "";
