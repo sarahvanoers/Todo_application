@@ -47,10 +47,11 @@
         public function setPassword($password)
         {
             if (strlen($password) < 5) {
-                throw new Exception ("Password must be at least 8 characters long.");
+                throw new Exception ("Password must be at least 5 characters long.");
             }
+            else { 
                 $this->password = $password;
-
+            }
                 return $this;
         }
         // -----------------------------------
@@ -64,7 +65,7 @@
             // HASHING PASSWORD BCRIPT 
             // --------------------------------------
 
-            $hash = password_hash($this->password, PASSWORD_BCRYPT);
+            $hash = password_hash($this->password, PASSWORD_DEFAULT);
             
             $statement->bindParam(':firstname', $this->firstname);
             $statement->bindParam(':lastname', $this->lastname);
