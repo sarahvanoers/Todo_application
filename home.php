@@ -80,21 +80,21 @@
                 <ul class="media-list">
                         <li class="media">
                             <div class="media-body">
-                            <input type="submit" class="" value="&times;"></span></li>
+                            <a href="#"><i class="fas fa-check"></i></a>
                             <strong class="nameUser">Sarah Van Oers</strong>
                             <span class="text-muted pull-right">
-                                    <small class="text-muted">3 days left</small>
-                                </span>
+                                <small class="text-muted">3 days left</small>
+                            </span>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Lorem ipsum dolor sit amet.
                                 </p>
+                                <input type="submit"class="btn btn-outline-primary tagList" value="List"></input>
                             </div>
                             </div>
                             <textarea class="form-control commentPost" placeholder="write a comment..." rows="3"></textarea>
                             <br>
                             <input type="submit" class="btn btn-secondary postBtn" value="Post"></input>
-                           
                         </li>
                         <hr>
                     </ul>

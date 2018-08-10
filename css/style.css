@@ -209,8 +209,8 @@ li {
     border-right-width: 7px;
     height: auto;
 }
-.card {
-    margin-top: -40%;
+.media-body {
+    color:#7d797b;
 }
 .commentPost {
     width: 80%;
@@ -220,6 +220,13 @@ li {
         background-color:#ed7669;
         border:none;
         margin-left: 4%;
+}
+.tagList {
+   color: #85c9db !important;
+   border-color: #85c9db !important;
+} 
+.tagList:hover {
+    background-color: #85c9db;
 }
 /*
 -------------------------------
