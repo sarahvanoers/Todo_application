@@ -24,12 +24,44 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav navbar-right">
-                <a class="nav-item nav-link" href="task.php">Add Task</a>
+                <a class="nav-item nav-link" href="task.php" data-toggle="modal" data-target="#exampleModalCenter">Add Task</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>
 
+    <!-- POPUP ADD TASK -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInput">Title</label>
+                        <input type="text" class="form-control" id="exampleInput"  name="title">
+
+                        <label for="exampleInput">Working hours</label>
+                        <input type="text" class="form-control" id="exampleInput"  name="workingHours">
+
+                        <label for="exampleInput">Date of the deadline</label>
+                        <input type="date" class="form-control" id="exampleInput"  name="dateOfTheDeadline">
+
+                        <label for="exampleInput">add to personal list</label>
+                       
+                    </div>
+                </div>   
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-secondary taskBtn" value="Add Task"></input>
+                    <input type="submit"  class="btn btn-secondary" data-dismiss="modal" value="Close"></input>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
       
             <div class="col-4 left">

@@ -56,7 +56,7 @@ GREY: #7d797b
 }
 /*
 -------------------------------
-        LOGIN
+        LOGIN REGISTER
 -------------------------------
 */
 
@@ -171,4 +171,29 @@ a:hover {
 
 
    
+}
+/*
+-------------------------------
+        TASK POPUP
+-------------------------------
+*/
+label {
+    color: #7d797b !important;
+}
+.exampleInput {
+    color: #7d797b !important;
+}
+.taskBtn {
+    background-color: #ed7669 !important;
+    border: none;
+}
+.modal-dialog .modal-dialog-centered {
+    font-family: 'hurme_geometric_sans_2light';
+}
+.modal-title {
+    font-family: 'hurme_geometric_sans_2bold';
+    color: #ed7669;
+}
+.btn-close {
+    background-color: #7d797b !important;
 }
