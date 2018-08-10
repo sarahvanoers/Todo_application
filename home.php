@@ -30,6 +30,20 @@
         </div>
     </nav>
 
+    <div class="row">
+      
+            <div class="col-4 left">
+                <h1 class=username>Hi, Sarah Van Oers</h1>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-8 right">
+                
+                </div>
+        </div>
 
 
 

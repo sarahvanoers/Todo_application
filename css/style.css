@@ -101,6 +101,7 @@ a:hover {
         HOME: NAV
 -------------------------------
 */
+
 .bg-light {
     background-color: #f0f0f0 !important;
 }
@@ -144,10 +145,30 @@ a:hover {
     margin-left: 70%;
     margin-top: 40px;
 }
+/*
+-------------------------------
+        HOME: LEFT
+-------------------------------
+*/
 .username{
     font-family: 'hurme_geometric_sans_2SBd';
     color: #ed7669;
-    font-size: 2em;
-    margin: 0 auto;
+    font-size: 1.3em;
+    width: 70%;
+    margin: 20% auto 5% auto; 
     display: block;
 } 
+.row {
+    width: 100%;
+    float: left;
+}
+.left {
+    width: 40%;
+    
+}
+.right {
+    width: 60%;
+
+
+   
+}
