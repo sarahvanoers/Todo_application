@@ -150,6 +150,13 @@ a:hover {
         HOME: LEFT
 -------------------------------
 */
+.row {
+    width: 100%;
+    float: left;
+}
+.left {
+    width: 40%;
+}
 .username{
     font-family: 'hurme_geometric_sans_2SBd';
     color: #ed7669;
@@ -160,13 +167,6 @@ a:hover {
     text-align: center;
     
 } 
-.row {
-    width: 100%;
-    float: left;
-}
-.left {
-    width: 40%;
-}
 .ListBtn {
         width: 80%;
         background-color:#ed7669;
@@ -179,6 +179,11 @@ a:hover {
 li {
     list-style-type: none;
 }
+
+.list {
+    margin-top: 10%;
+    
+}
 .deleteList {
     font-size: 1.5rem;
     font-weight: 400;
@@ -188,6 +193,10 @@ li {
     background: none;
     border: none;
     cursor: pointer;
+    padding-left: 20%;
+}
+.listAlign {
+    float: right;
 }
 /*
 -------------------------------
@@ -198,7 +207,7 @@ li {
     width: 60%;
     border-color: #7d797b;
     border-right-width: 7px;
-    height: 400px;
+    height: auto;
 }
 /*
 -------------------------------
