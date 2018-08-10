@@ -4,16 +4,61 @@ RED: #ed7669
 GREEN: #7cbe7f
 BLUE: #85c9db
 YELLOW: #f6c78f
+ORANGE: #ed8330
 GREY: #7d797b
 
-
+/*
+            FONTFACE
 */
+
+/*-------------------------------- BLACK */
+@font-face {
+    font-family: 'hurme_geometric_sans_2black';
+    src: url('../font/hurme_black/hurmegeometricsans2_black.woff') format('woff2'),
+         url('../font/hurme_black/hurmegeometricsans2_black.woff2') format('woff');
+       
+    font-weight: normal;
+    font-style: normal;
+}
+/* -------------------------------- BOLD */
+@font-face {
+    font-family: 'hurme_geometric_sans_2bold';
+    src: url('../font/hurme_bold/hurmegeometricsans2_bold-webfont.woff2') format('woff2'),
+         url('../font/hurme_bold/hurmegeometricsans2_bold-webfont.woff') format('woff');
+
+    font-weight: normal;
+    font-style: normal;
+}
+/* -------------------------------- SEMI BOLD */
+@font-face {
+    font-family: 'hurme_geometric_sans_2SBd';
+    src: url('../font/hurme_semiBold/hurmegeometricsans2_semibold-webfont.woff2') format('woff2'),
+         url('../font/hurme_semiBold/hurmegeometricsans2_semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* -------------------------------- REGULAR */
+@font-face {
+    font-family: 'hurme_geometric_sans_2regular';
+    src: url('../font/hurme_regular/hurmegeometricsans2-webfont.woff2') format('woff2'),
+         url('../font/hurme_regular/hurmegeometricsans2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -------------------------------- LIGHT */
+@font-face {
+    font-family: 'hurme_geometric_sans_2light';
+    src: url('../font/hurme_light/hurmegeometricsans2_light-webfont.woff2') format('woff2'),
+         url('../font/hurme_light/hurmegeometricsans2_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /*
 -------------------------------
         LOGIN
 -------------------------------
 */
-
 
 .tekstRegister {
     color: #85c9db;
@@ -45,4 +90,64 @@ GREY: #7d797b
 a{
     margin-top: 4%;
     color: #ed7669;
+    text-decoration: none;
 }
+a:hover {
+    text-decoration: none;
+    color: #7d797b !important;
+}
+/*
+-------------------------------
+        HOME: NAV
+-------------------------------
+*/
+.bg-light {
+    background-color: #fff !important;
+}
+
+.brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 2em;
+    line-height: inherit;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #7d797b!important;
+    font-family: 'hurme_geometric_sans_2black' !important;
+}
+.brand:hover {
+    text-decoration: none;
+    color: #85c9db;!important;
+}
+.navbar-light .navbar-toggler {
+    font-size: 1.4em;
+    border: none;
+    
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(237, 131, 48, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+    color:#ed7669;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color: #ed7669;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-family: 'hurme_geometric_sans_2regular';
+    color:#7d797b;
+
+}
+.navbar-right {
+    margin-left: 70%;
+    margin-top: 40px;
+}
+.username{
+    font-family: 'hurme_geometric_sans_2SBd';
+    color: #ed7669;
+    font-size: 2em;
+    margin: 0 auto;
+    display: block;
+} 
