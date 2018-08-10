@@ -209,6 +209,18 @@ li {
     border-right-width: 7px;
     height: auto;
 }
+.card {
+    margin-top: -40%;
+}
+.commentPost {
+    width: 80%;
+    margin-left: 4%;
+}
+.postBtn {
+        background-color:#ed7669;
+        border:none;
+        margin-left: 4%;
+}
 /*
 -------------------------------
         TASK POPUP

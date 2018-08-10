@@ -67,22 +67,42 @@
       
             <div class="col-4 left">
                 <h1 class=username>Hi, Sarah Van Oers</h1>
-                <input type="submit" class="btn btn-secondary ListBtn" value="Add List"></input>
+                <input type="submit" class="btn btn-secondary ListBtn" value="Add personal List"></input>
                 <ul class="list-group list-group-flush list">
                     <li class="list-group-item">Php <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>
                     <li class="list-group-item">Productlab <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>
                     <li class="list-group-item">Interaction Design <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li> 
-                </ul>
-                
-                
+                </ul>   
             </div>
             <div class="col-8 right border-left">
-                
+            <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <ul class="media-list">
+                        <li class="media">
+                            <div class="media-body">
+                            <input type="submit" class="" value="&times;"></span></li>
+                            <strong class="nameUser">Sarah Van Oers</strong>
+                            <span class="text-muted pull-right">
+                                    <small class="text-muted">3 days left</small>
+                                </span>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                            </div>
+                            <textarea class="form-control commentPost" placeholder="write a comment..." rows="3"></textarea>
+                            <br>
+                            <input type="submit" class="btn btn-secondary postBtn" value="Post"></input>
+                           
+                        </li>
+                        <hr>
+                    </ul>
                 </div>
+            </div>
         </div>
-
-
-
+            </div>
+    </div>
 </body>
 
 </html>
