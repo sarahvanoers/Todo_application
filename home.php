@@ -62,17 +62,20 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
       
             <div class="col-4 left">
                 <h1 class=username>Hi, Sarah Van Oers</h1>
+                <input type="submit" class="btn btn-secondary ListBtn" value="Add List"></input>
                 <ul>
-                    <li>
-
-                    </li>
+                    <li>Php  <input type="submit" class="deleteList" value="&times;"></input></li>
+                    <li>Productlab <input type="submit" class="deleteList" value="&times;"></input></li>
+                    <li>Interaction Design <input type="submit" class="deleteList" value="&times;"></input></li>
                 </ul>
+
             </div>
-            <div class="col-8 right">
+            <div class="col-8 right border-left">
                 
                 </div>
         </div>
