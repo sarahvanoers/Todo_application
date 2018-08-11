@@ -1,4 +1,24 @@
-<form method="POST" class="form" id="popUp_task">
+<?php
+    include_once("classes/Task.class.php");
+
+    if (!empty($_POST) ) {
+        $title = $_POST['title'];
+        $working_hours = $_POST['working_hours'];
+        $date = $_POST['date'];
+        $user_id =$_POST['user_id'];
+        
+        $task = new Task();
+        $task->setTitle($title);
+        $task->setWorking_hours($working_hours);
+        $task->setDate($date);
+        //$task->setUser_id($user_id);
+        //$task->setList_id($list_id);
+        //$task->setStatus($status);
+
+        $task->create();
+    }
+    
+?><form method="POST" class="form" id="popUp_task">
  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

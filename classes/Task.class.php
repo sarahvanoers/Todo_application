@@ -77,6 +77,16 @@
         public function create() {
             $conn = Db::GetInstance();
         
+            $statement = $conn->prepare("insert into task(title, working_hours, date) values (:title, :working_hours, :date)");
+            $statement->bindParam(":title", $this->title);
+            $statement->bindParam(":working_hours", $this->working_hours);
+            $statement->bindParam(":date", $this->date);
+            //$statement->bindParam(":user_id", $this->user_id);
+            //$statement->bindParam(":list_id", $this->list_id);
+            //$statement->bindParam(":status", $this->status);
+            $statement->execute();
+
+            return $statement;
         }
     }
 ?> 
