@@ -13,6 +13,8 @@
     <!-- Form  CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -38,12 +40,12 @@
     <?php 
     include_once("classes/Lists.class.php");
 
-    // include_once("components/listCreate.php"); 
-    // include_once("components/taskCreate.php");
+    include_once("components/listCreate.php"); 
+    include_once("components/taskCreate.php");
    
-   $tasks_lists = new Lists();
-   $tasks_lists->result();
-   print_r($tasks_lists); 
+    $tasks_lists = new Lists();
+    $result = $tasks_lists->result();
+   
     ?>
     <div class="row">
       
@@ -53,7 +55,14 @@
                 <a class="nav-item nav-link" href="listCreate.php" data-toggle="modal" data-target="#exampleModalCenter2">Add list &plus; </a>
                 
                 <ul class="list-group list-group-flush list">
-                    <li class="list-group-item">Php <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>
+
+                <?php foreach($result as $key => $r) {
+                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>';
+
+                }
+                
+                ?>
+                    
                     <li class="list-group-item">Productlab <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>
                     <li class="list-group-item">Interaction Design <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li> 
                 </ul>   
@@ -75,6 +84,7 @@
                                 <input type="submit"class="btn btn-outline-primary tagList" value="List"></input>
                             </div>
                             </div>
+                            <input type="checkbox" data-toggle="toggle">
                             <textarea class="form-control commentPost" placeholder="write a comment..." rows="3"></textarea>
                             <br>
                             <input type="submit" class="btn btn-secondary postBtn" value="Post"></input>
