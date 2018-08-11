@@ -70,6 +70,19 @@
         return $results;
     }
 
-   
+    // delete to databank CRUD CREATE
+
+    public function delete() {
+        $conn = Db::GetInstance();
+        
+        $statement = $conn->prepare("delete from list where id = :id)");
+        $statement->bindValue(':id',$this->id());
+
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        return $results;
+    }
+
 }
 ?>
