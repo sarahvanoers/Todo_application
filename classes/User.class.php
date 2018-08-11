@@ -121,10 +121,11 @@
             $hash = $user['password'];
             $password = $this->getPassword();
             if (password_verify($password, $hash) ) {
-                    return true;
+                $_SESSION['user_id'] = $user['id'];
+                return true;
                 }
-                else {
-                    return false;
+            else {
+                return false;
                 }
         }
   
