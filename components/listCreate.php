@@ -1,5 +1,4 @@
 <?php
-    include_once("classes/Lists.class.php");
 
     //echo $_SESSION['user_id'];
 

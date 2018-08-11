@@ -1,11 +1,14 @@
 <?php
     include_once("classes/Task.class.php");
 
+
     if (!empty($_POST) ) {
         $title = $_POST['title'];
-        $working_hours = $_POST['working_hours'];
-        $date = $_POST['date'];
-        $user_id =$_POST['user_id'];
+        $working_hours = $_POST['workingHours'];
+        $date = $_POST['dateOfTheDeadline'];
+        //$user_id =$_POST['user_id'];
+        //$list_id =$_POST['list_id'];
+        //$status =$_POST['status'];
         
         $task = new Task();
         $task->setTitle($title);

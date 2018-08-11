@@ -5,8 +5,27 @@
    
     private $title;
     private $user_id;
+    public $results;
 
+ /**
+     * Get the value of results
+     */ 
+    public function getResults()
+    {
+        return $this->results;
+    }
 
+    /**
+     * Set the value of results
+     *
+     * @return  self
+     */ 
+    public function setResults($results)
+    {
+        $this->results = $results;
+
+        return $this;
+    }
     public function getTitle()
     {
             return $this->title;
@@ -42,5 +61,15 @@
 
         return $statement;
     }
+    public function result(){
+        $conn = Db::GetInstance();
+        $statement = $conn->prepare("select * from list");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        return $results;
+    }
+
+   
 }
 ?>

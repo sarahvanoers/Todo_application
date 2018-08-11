@@ -76,7 +76,7 @@
         }
         public function create() {
             $conn = Db::GetInstance();
-        
+            // this --> omdat ik eerst setters gebruikt heb ga ik nu de instantie ophalen (get)
             $statement = $conn->prepare("insert into task(title, working_hours, date) values (:title, :working_hours, :date)");
             $statement->bindParam(":title", $this->title);
             $statement->bindParam(":working_hours", $this->working_hours);
