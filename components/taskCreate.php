@@ -7,7 +7,7 @@
         $working_hours = $_POST['workingHours'];
         $date = $_POST['dateOfTheDeadline'];
         //$user_id =$_POST['user_id'];
-        //$list_id =$_POST['list_id'];
+        $list_id =$_POST['list_id'];
         //$status =$_POST['status'];
         
         $task = new Task();
@@ -15,7 +15,7 @@
         $task->setWorking_hours($working_hours);
         $task->setDate($date);
         //$task->setUser_id($user_id);
-        //$task->setList_id($list_id);
+        $task->setList_id($list_id);
         //$task->setStatus($status);
 
         $task->create();
@@ -41,9 +41,18 @@
 
                         <label for="exampleInput">Date of the deadline</label>
                         <input type="date" class="form-control" id="exampleInput"  name="dateOfTheDeadline">
-
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInput">add to personal list</label>
-                       
+                        <select class="form-control" id="exampleFormControlSelect1" name="list_id">
+                           
+                           <?php  
+                            foreach($result as $key => $r) {
+                                echo ' <option value= "' . $r["id"] . ' ">' . $r["title"]  . ' </option>';
+                            }
+                            ?>
+                           
+                        </select>
                     </div>
                 </div>   
                 <div class="modal-footer">

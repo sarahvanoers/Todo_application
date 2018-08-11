@@ -39,12 +39,12 @@
     </nav>
     <?php 
     include_once("classes/Lists.class.php");
-
-    include_once("components/listCreate.php"); 
-    include_once("components/taskCreate.php");
    
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
+
+    include_once("components/listCreate.php"); 
+    include_once("components/taskCreate.php");
    
     ?>
     <div class="row">
@@ -53,18 +53,12 @@
                 <h1 class=username>Hi, Sarah Van Oers</h1>
                 <h2>List overview</h2>
                 <a class="nav-item nav-link" href="listCreate.php" data-toggle="modal" data-target="#exampleModalCenter2">Add list &plus; </a>
-                
+                <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list">
-
                 <?php foreach($result as $key => $r) {
                    echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>';
-
-                }
-                
+                }          
                 ?>
-                    
-                    <li class="list-group-item">Productlab <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li>
-                    <li class="list-group-item">Interaction Design <span class="listAlign"><input type="submit" class="deleteList" value="&times;"></span></li> 
                 </ul>   
             </div>
             <div class="col-8 right border-left">
