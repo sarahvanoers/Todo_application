@@ -8,6 +8,7 @@
         private $user_id;
         private $list_id;
         private $status;
+        public $results;
         
         public function getTitle()
         {
@@ -88,5 +89,14 @@
 
             return $statement;
         }
+        public function result(){
+                $conn = Db::GetInstance();
+                $statement = $conn->prepare("select task.*, list.title as list_title from task inner join list where task.list_id = list.id");
+                $statement->execute();
+                $results = $statement->fetchAll();
+
+        
+                return $results;
+            }
     }
 ?> 
