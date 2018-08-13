@@ -1,19 +1,11 @@
-
 <?php
     include_once("classes/Lists.class.php");
-    include_once("classes/Task.class.php");
 
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
 
-    $task = new Task();
-    $resultTask = $task->result();
-    //print_r( $resultTask);
     
-    include_once("components/listCreate.php"); 
-    include_once("components/taskCreate.php");
- ?>
-<html lang="en">
+?>html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,37 +55,9 @@
             </div>
             
             <div class="col-8 right border-left">
-            <div class="comment-wrapper">
-            <div class="panel panel-info">
-                <ul class="media-list">
-                        <li class="media">
-                            <div class="media-body">
-                            <?php foreach($resultTask as $key => $r) { ?>
-                            <input type="checkbox" data-toggle="toggle">
-
-                            <strong class="nameUser">Sarah Van Oers</strong>
-                            <span class="text-muted pull-right">
-                                <small class="text-muted">3 days left</small>
-                            </span>
-                            <p> 
-                                <?php $r["title"]  ?>
-                            </p>
-                                <input type="submit"class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>"></input>
-                                <div class="setComment">
-                                    <h6 class="nameUserComment">Sarah Van Oers</h6>
-                                    <div class="vakComment"></div>
-                                </div>
-                                <textarea class="form-control commentPost" placeholder="write a comment..." rows="3"></textarea>
-                                <input type="submit" class="btn btn-secondary postBtn" value="Post"></input>
-
-                            </div> <!--  media-body -->
-                            <br>
-                        </li>
-                        <hr>
-                    </ul>
-            </div> <!-- panel panel-info -->
-        </div> <!-- comment-wrapper -->
-        <?php  } ?>
+            
+            
+    
             </div> <!--col-8 right border-left -->
     </div><!-- row -->
 </body>

@@ -7,7 +7,7 @@
         $lists = new Lists();
         $lists->setTitle($title);
        // $task->setUser_id($_SESSION['user_id']);
-        $lists->create();
+        $lists->delete();
     }
     
 ?>
