@@ -56,7 +56,7 @@
                 <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list">
                 <?php foreach($result as $key => $r) {
-                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
+                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value=""><i class="fa close" aria-hidden="true"></i></span></li>';
                 }          
                 ?>
                 </ul>   
@@ -69,7 +69,8 @@
                         <li class="media">
                             <div class="media-body">
                             <?php foreach($resultTask as $key => $r) { ?>
-                            <input type="checkbox" data-toggle="toggle">
+                                <button class="todo_button">ToDo</button>
+                                <button class="done_button">Done</button>
 
                             <strong class="nameUser">Sarah Van Oers</strong>
                             <span class="text-muted pull-right">

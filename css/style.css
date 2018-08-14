@@ -214,19 +214,21 @@ li {
     color:#7d797b;
 }
 .commentPost {
-    width: 80%;
+    width: 70%;
     margin-left: 4%;
+    margin-top: 5%;
 }
 .postBtn {
         background-color:#ed7669;
         border:none;
         margin-left: 4%;
+        margin-top:4%;
 }
 .tagList {
    color: #85c9db !important;
    border-color: #85c9db !important;
    margin-bottom: 4% !important;
-
+   margin-left: 4%;
 } 
 .tagList:hover {
     background-color: #85c9db;
@@ -239,14 +241,45 @@ li {
     border-color: #85c9db!important;
     border-radius: 30;
     border: solid;
-    margin-left: 15%;
+    margin-left: 20%;
 
 }
 .nameUserComment {
     float: left;
+    margin-left: 4%;
 }
 
-
+/*
+-------------------------------
+        HOME: TODO DONE BUTTON
+-------------------------------
+*/
+button.todo_button, button.done_button {
+    background: #eb5e4e;
+    color: white;
+    text-align: center;
+    width: 70px;
+    cursor: pointer;
+  }
+  button.todo_button:hover, button.done_button:hover {
+    background: #7d797b;
+  }
+  /* 
+  als er op de todo button is gedrukt wil ik deze knop weg
+  */
+  button.todo_button {
+    display: inline;
+  }
+  .favorite button.todo_button {
+    display: none;
+  }
+  
+  button.done_button {
+    display: none;
+  }
+  .favorite button.done_button {
+    display: inline;
+  }
 /*
 -------------------------------
         TASK POPUP
