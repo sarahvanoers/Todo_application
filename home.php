@@ -12,8 +12,8 @@
     
     include_once("components/listCreate.php"); 
     include_once("components/taskCreate.php");
- ?>
-<html lang="en">
+    include_once("components/listDelete.php");
+?><html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +56,7 @@
                 <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list">
                 <?php foreach($result as $key => $r) {
-                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value=""><i class="fa close" aria-hidden="true"></i></span></li>';
+                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
                 }          
                 ?>
                 </ul>   

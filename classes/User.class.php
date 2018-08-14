@@ -101,7 +101,6 @@
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['user'] = $this->email;
-            
             header('Location: home.php');
         }
         
