@@ -3,9 +3,9 @@
     //echo $_SESSION['user_id'];
 
     if (!empty($_POST) ) {
-        $title = $_POST['title'];
+        $id = $_POST['id'];
         $lists = new Lists();
-        $lists->setTitle($title);
+        $lists->setId($id);
        // $task->setUser_id($_SESSION['user_id']);
         $lists->delete();
     }

@@ -56,7 +56,7 @@
                 <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list">
                 <?php foreach($result as $key => $r) {
-                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
+                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
                 }          
                 ?>
                 </ul>   

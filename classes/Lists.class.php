@@ -3,29 +3,33 @@
 
     class Lists {
    
+    private $id;
     private $title;
     private $user_id;
     public $results;
+ 
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
 
- /**
-     * Get the value of results
-     */ 
+        return $this;
+    }
+
     public function getResults()
     {
         return $this->results;
     }
-
-    /**
-     * Set the value of results
-     *
-     * @return  self
-     */ 
     public function setResults($results)
     {
         $this->results = $results;
 
         return $this;
     }
+    
     public function getTitle()
     {
             return $this->title;
@@ -83,6 +87,8 @@
 
         return $results;
     }
+
+
 
 
 }
