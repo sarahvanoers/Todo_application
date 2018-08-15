@@ -78,11 +78,11 @@
         public function create() {
             $conn = Db::GetInstance();
             // this --> omdat ik eerst setters gebruikt heb ga ik nu de instantie ophalen (get)
-            $statement = $conn->prepare("insert into task(title, working_hours, date, list_id) values (:title, :working_hours, :date, :list_id)");
+            $statement = $conn->prepare("insert into task(title, working_hours, date, list_id, user_id) values (:title, :working_hours, :date, :list_id, :user_id)");
             $statement->bindParam(":title", $this->title);
             $statement->bindParam(":working_hours", $this->working_hours);
             $statement->bindParam(":date", $this->date);
-            //$statement->bindParam(":user_id", $this->user_id);
+            $statement->bindParam(":user_id", $_SESSION['user']['id']);
             $statement->bindParam(":list_id", $this->list_id);
             //$statement->bindParam(":status", $this->status);
             $statement->execute();
@@ -91,13 +91,14 @@
         }
         public function result(){
                 $conn = Db::GetInstance();
-                $statement = $conn->prepare("select task.*, list.title as list_title from task inner join list where task.list_id = list.id");
+                //deze query haalt tegelijk alle taken op samen met hun lijst en de gebruiker die ze heeft gemaakt
+                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id");
                 $statement->execute();
                 $results = $statement->fetchAll();
 
         
                 return $results;
-            }
+        }
             
     }
 ?> 

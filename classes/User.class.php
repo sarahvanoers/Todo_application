@@ -100,7 +100,10 @@
         public function login() {
             session_start();
             $_SESSION['loggedin'] = true;
-            $_SESSION['user'] = $this->email;
+            $user = $this->getUser($this->email);
+            //var_dump($user);
+            $_SESSION['user'] = $user;
+            
             header('Location: home.php');
         }
         
@@ -127,6 +130,18 @@
                 return false;
                 }
         }
+        public function getUser($email) {
+            $conn= Db::getInstance();
+            $statement = $conn->prepare("SELECT * FROM users WHERE email=:email");
+            $statement->bindParam(':email', $email);
+        
+            $statement->execute();
+
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+            return $user;
+        }
+
   
     }
 ?>

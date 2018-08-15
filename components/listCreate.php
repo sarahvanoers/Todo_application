@@ -3,11 +3,14 @@
     //echo $_SESSION['user_id'];
 
     if (!empty($_POST) ) {
-        $title = $_POST['title'];
-        $lists = new Lists();
-        $lists->setTitle($title);
-       // $task->setUser_id($_SESSION['user_id']);
-        $lists->create();
+        if(!empty($_POST['createList'])){
+            $title = $_POST['title'];
+            $lists = new Lists();
+            $lists->setTitle($title);
+            // $task->setUser_id($_SESSION['user_id']);
+            $lists->create();
+        }
+        
     }
     
 ?>
@@ -15,6 +18,7 @@
  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                <input type="hidden" name="createList" value="true">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">New List</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

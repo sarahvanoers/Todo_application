@@ -57,9 +57,9 @@
     public function create() {
         $conn = Db::GetInstance();
 
-        $statement = $conn->prepare("insert into list(title) values (:title)");
+        $statement = $conn->prepare("insert into list(title, user_id) values (:title, :user_id)");
         $statement->bindParam(":title", $this->title);
-       // $statement->bindParam(":user_id", $user_id);
+        $statement->bindParam(":user_id", $_SESSION['user']['id']);
 
         $statement->execute();
 
@@ -80,16 +80,12 @@
         $conn = Db::GetInstance();
         
         $statement = $conn->prepare("delete from list where id = :id)");
-        $statement->bindValue(':id',$this->id());
+        $statement->bindValue(":id", $this->id);
 
         $statement->execute();
         $results = $statement->fetchAll();
 
         return $results;
     }
-
-
-
-
 }
 ?>
