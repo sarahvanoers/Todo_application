@@ -54,21 +54,39 @@
 
     // save to databank CRUD CREATE
 
-    public function create() {
+    public function create($title, $id) {
         $conn = Db::GetInstance();
 
         $statement = $conn->prepare("insert into list(title, user_id) values (:title, :user_id)");
-        $statement->bindParam(":title", $this->title);
-        $statement->bindParam(":user_id", $_SESSION['user']['id']);
+        $statement->bindValue(":title", $title);
+        $statement->bindValue(":user_id", $id);
 
-        $statement->execute();
+        $result = $statement->execute();
+        
+        //Als het geslaagd is -> $result = true, anders false
+        if($result){
+            //het is geslaagd want $result = true
+        $obj = [
+            'result'=>$result,
+            'listid'=>$conn->lastInsertId()
+            //ik geef mee aan mijn object dat de lijst toegevoegd is, en welk id deze heeft
+        ];
+        }else{
+            $obj = [
+                'result'=>$result,
+                'listid'=>null
+                //er ging iets mis, er is geen lijst toegevoegd, mijn id bestaat niet
+            ];                           
+        }
 
-        return $statement;
+        return $obj;
+        //stuur object terug naar ajax/listCreate.php
     }
     public function result(){
         $conn = Db::GetInstance();
         $statement = $conn->prepare("select * from list");
         $statement->execute();
+        
         $results = $statement->fetchAll();
 
         return $results;
@@ -83,6 +101,9 @@
         $statement->bindParam(":id", $id);
 
         $result = $statement->execute();
+
+        
+
         return $result;
     }
 }

@@ -7,7 +7,7 @@
             $title = $_POST['title'];
             $working_hours = $_POST['workingHours'];
             $date = $_POST['dateOfTheDeadline'];
-            //$user_id =$_POST['user_id'];
+            $user_id =$_POST['user_id'];
             $list_id =$_POST['list_id'];
             //$status =$_POST['status'];
             

@@ -144,4 +144,17 @@
 
   
     }
+    // via databank ervoor gezorgt dat er geen taak meer kan zijn als de user is verwijderd
+    // als de lijst is verwijdert gaat de taak ook verwijderd worden
+    // lijst --> taak = 1 op meer relatie 
+    // https://stackoverflow.com/questions/13105019/how-to-add-on-delete-cascade-and-on-update-restrict-using-phpmyadmin
+
+    // cursus basics php sql injection etc
+    // https://www.linkedin.com/learning/php-with-mysql-essential-training-1-the-basics/
+
+
+    // cursus OOP met database
+    // https://www.linkedin.com/learning/php-object-oriented-programming-with-databases/
+    // cursus OOP 
+    // https://www.linkedin.com/learning/php-object-oriented-programming-2/
 ?>

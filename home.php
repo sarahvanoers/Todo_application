@@ -6,6 +6,7 @@
     include_once("classes/User.class.php");
     include_once("classes/Lists.class.php");
     include_once("classes/Task.class.php");
+    include_once("classes/Date.class.php");
 
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
@@ -63,7 +64,7 @@
                 <h2>List overview</h2>
                 <a class="nav-item nav-link" href="listCreate.php" data-toggle="modal" data-target="#exampleModalCenter2">Add list &plus; </a>
                 <!-- ADD LIST -->
-                <ul class="list-group list-group-flush list">
+                <ul class="list-group list-group-flush list appendList">
                 <?php foreach($result as $key => $r) {
                    echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
                 }          
@@ -83,7 +84,11 @@
 
                             <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
-                                <small class="text-muted">3 days left</small>
+                                <?php 
+                                    $date = new Date();
+                                    $timestring = $date->getTimestring($r['date']);
+                                ;?>
+                                <small class="text-muted"><?php echo $timestring;?></small>
                             </span>
                             <p> 
                                 <?php $r["title"]  ?>

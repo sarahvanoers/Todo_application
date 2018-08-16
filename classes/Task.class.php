@@ -92,7 +92,7 @@
         public function result(){
                 $conn = Db::GetInstance();
                 //deze query haalt tegelijk alle taken op samen met hun lijst en de gebruiker die ze heeft gemaakt
-                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id");
+                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id order by task.date");
                 $statement->execute();
                 $results = $statement->fetchAll();
 
