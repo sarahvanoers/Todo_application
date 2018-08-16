@@ -61,7 +61,7 @@
       
             <div class="col-4 left">
                 <h1 class=username>Hi, <?php echo($_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname']);?></h1>
-                <h2>List overview</h2>
+                <h2 class="listOverview">List overview</h2>
                 <a class="nav-item nav-link" href="listCreate.php" data-toggle="modal" data-target="#exampleModalCenter2">Add list &plus; </a>
                 <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list appendList">
@@ -73,12 +73,14 @@
             </div>
             
             <div class="col-8 right border-left">
+            <?php foreach($resultTask as $key => $r) { ?>
             <div class="comment-wrapper">
             <div class="panel panel-info">
                 <ul class="media-list">
                         <li class="media">
+                        
                             <div class="media-body">
-                            <?php foreach($resultTask as $key => $r) { ?>
+                            
                                 <button class="todo_button">ToDo</button>
                                 <button class="done_button">Done</button>
 
@@ -90,15 +92,18 @@
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                             </span>
-                            <p> 
-                                <?php $r["title"]  ?>
+                            <input type="submit"class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>"></input>
+
+                            <p class="titleTask"> 
+                              <span class="textTask">Title task:</span> <?php echo $r["title"] ?> <br>
+                              <span class="textTask">Working hours:</span> <?php echo $r["working_hours"] ?>
+
                             </p>
-                                <input type="submit"class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>"></input>
                                 <div class="setComment">
                                     <h6 class="nameUserComment"><?php echo $r["firstname"] . " " . $r["lastname"] ?></h6>
                                     <div class="vakComment"></div>
                                 </div>
-                                <textarea class="form-control commentPost" placeholder="write a comment..." rows="3"></textarea>
+                                <textarea class="form-control commentPost" placeholder="write a comment..." rows="1"></textarea>
                                 <input type="submit" class="btn btn-secondary postBtn" value="Post"></input>
 
                             </div> <!--  media-body -->

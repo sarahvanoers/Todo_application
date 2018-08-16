@@ -5,9 +5,9 @@
     if (!empty($_POST) ) {
         if(!empty($_POST['createTask'])){
             $title = $_POST['title'];
-            $working_hours = $_POST['workingHours'];
+            $working_hours = $_POST['working_hours'];
             $date = $_POST['dateOfTheDeadline'];
-            $user_id =$_POST['user_id'];
+            //$user_id =$_POST['user_id'];
             $list_id =$_POST['list_id'];
             //$status =$_POST['status'];
             
@@ -40,7 +40,7 @@
                         <input type="text" class="form-control" id="exampleInput"  name="title">
 
                         <label for="exampleInput">Working hours</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="workingHours">
+                        <input type="text" class="form-control" id="exampleInput"  name="working_hours">
 
                         <label for="exampleInput">Date of the deadline</label>
                         <input type="date" class="form-control" id="exampleInput"  name="dateOfTheDeadline">

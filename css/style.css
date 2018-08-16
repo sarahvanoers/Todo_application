@@ -127,11 +127,15 @@ a:hover {
     border: none;
     
 }
+.nav-link {
+    color:#85c9db !important;
+
+}
 .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(237, 131, 48, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
-    color:#ed7669;
+    color:#85c9db;
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
     color:  #85c9db !important;
@@ -150,12 +154,16 @@ a:hover {
         HOME: LEFT
 -------------------------------
 */
+.listOverview {
+    color: #85c9db !important;
+    margin-left:8%;
+} 
 .row {
     width: 100%;
     float: left;
 }
 .left {
-    width: 40%;
+    width: 35%;
 }
 .username{
     font-family: 'hurme_geometric_sans_2SBd';
@@ -188,7 +196,7 @@ li {
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1;
-    color: #000;
+    color: #85c9db !important;
     text-shadow: none;
     background: none;
     border: none;
@@ -199,57 +207,87 @@ li {
     float: right;
     margin-top: -7px;
 }
-
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+.list-group-item  {
+    color:#85c9db !important;
+    margin-left: 5%;
+}
 /*
 -------------------------------
         HOME: RIGHT
 -------------------------------
 */
+.media-list {
+    margin-top:5%;
+    width: 100%;
+    margin-bottom: 2%;
+}
+.nameUser {
+    color: #ed8330;
+    margin-left: 3%;
+}
 .right {
     width: 60%;
     border-color: #7d797b;
     border-right-width: 7px;
-    height: 2000px;
+    height: auto;
+}
+.text-muted {
+    color: #ed8330 !important; 
+    font-family: 'hurme_geometric_sans_2SBd';
 }
 .media-body {
     color:#7d797b;
 }
 .commentPost {
-    width: 70%;
+    width: 62%;
     margin-left: 4%;
     margin-top: 5%;
 }
 .postBtn {
-        background-color:#ed7669;
-        border:none;
-        margin-left: 4%;
-        margin-top:4%;
+    background-color:#ed7669;
+    border:none;
+    margin-left: 4%;
+    margin-top:2%;
 }
 .tagList {
    color: #85c9db !important;
    border-color: #85c9db !important;
-   margin-bottom: 4% !important;
    margin-left: 4%;
 } 
 .tagList:hover {
     background-color: #85c9db;
 }
-
 .vakComment {
     display: block;
     width: 400px;
     height: 50px;
-    border-color: #85c9db!important;
+    border-color: #7d797b!important;
     border-radius: 30;
-    border: solid;
+    border: solid 0.5px;
     margin-left: 20%;
 
 }
 .nameUserComment {
     float: left;
     margin-left: 4%;
+    font-size: 0.9em;
+    font-family: 'hurme_geometric_sans_2light';
 }
-
+.titleTask {
+    margin-left: 4%;
+    margin-top: 3%;
+    font-size: 1.5em;
+    font-family: 'hurme_geometric_sans_2SBd';
+    color: #7d797b;
+}
+.textTask {
+    font-size: 0.9em;
+    font-family: 'hurme_geometric_sans_2light';
+}
 /*
 -------------------------------
         HOME: TODO DONE BUTTON
@@ -263,7 +301,7 @@ button.todo_button, button.done_button {
     cursor: pointer;
   }
   button.todo_button:hover, button.done_button:hover {
-    background: #7d797b;
+    background: #7cbe7f;
   }
   /* 
   als er op de todo button is gedrukt wil ik deze knop weg
@@ -280,6 +318,9 @@ button.todo_button, button.done_button {
   }
   .favorite button.done_button {
     display: inline;
+  }
+  .comment-wrapper {
+      display: block;
   }
 /*
 -------------------------------
