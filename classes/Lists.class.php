@@ -54,12 +54,12 @@
 
     // save to databank CRUD CREATE
 
-    public function create($title, $id) {
+    public function create($title, $userid) {
         $conn = Db::GetInstance();
 
         $statement = $conn->prepare("insert into list(title, user_id) values (:title, :user_id)");
         $statement->bindValue(":title", $title);
-        $statement->bindValue(":user_id", $id);
+        $statement->bindValue(":user_id", $userid);
 
         $result = $statement->execute();
         
@@ -92,7 +92,7 @@
         return $results;
     }
 
-    // delete to databank CRUD CREATE
+    // delete to databank CRUD 
 
     public function delete($id) {
         $conn = Db::GetInstance();

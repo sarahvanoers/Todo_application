@@ -1,5 +1,4 @@
 <?php
-
     header('Content-Type: application/json');
     include_once('../classes/Lists.class.php');
     if (!empty($_POST) ) {
@@ -17,7 +16,7 @@
                     'code' => 200,
                     'title' => $title,
                     'listid' => $response['listid'],
-                    'message' => "lijst is toegevoegd"
+                    'message' => "list has been added"
                 ];
             }else{
                 //NIET VERWIJDERD

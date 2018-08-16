@@ -261,21 +261,19 @@ li {
 .tagList:hover {
     background-color: #85c9db;
 }
-.vakComment {
-    display: block;
-    width: 400px;
-    height: 50px;
-    border-color: #7d797b!important;
-    border-radius: 30;
-    border: solid 0.5px;
-    margin-left: 20%;
-
+.textComment {
+    margin-left: 18% !important;
+    font-family: 'hurme_geometric_sans_2SBd';
+    font-size: 0.9em;
+    color: #7d797b;
 }
 .nameUserComment {
     float: left;
-    margin-left: 4%;
+    margin-left: 4% !important;
+    margin-top:2px;
     font-size: 0.9em;
     font-family: 'hurme_geometric_sans_2light';
+    color: #7d797b;
 }
 .titleTask {
     margin-left: 4%;

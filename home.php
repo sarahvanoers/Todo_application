@@ -7,6 +7,7 @@
     include_once("classes/Lists.class.php");
     include_once("classes/Task.class.php");
     include_once("classes/Date.class.php");
+    include_once("classes/Comment.class.php");
 
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
@@ -16,12 +17,12 @@
     //print_r( $resultTask);
 
     //var_dump($_SESSION['user']['id']);
+   
     
     include_once("components/listCreate.php"); 
     include_once("components/taskCreate.php");
 
- ?>
-<html lang="en">
+ ?><html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,20 +93,42 @@
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                             </span>
-                            <input type="submit"class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>"></input>
+                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>">
 
                             <p class="titleTask"> 
-                              <span class="textTask">Title task:</span> <?php echo $r["title"] ?> <br>
-                              <span class="textTask">Working hours:</span> <?php echo $r["working_hours"] ?>
+                              <span class="textTask">Title task:</span> <?php echo $r["title"]; ?> <br>
+                              <span class="textTask">Working hours:</span> <?php echo $r["working_hours"]; ?>
 
                             </p>
-                                <div class="setComment">
-                                    <h6 class="nameUserComment"><?php echo $r["firstname"] . " " . $r["lastname"] ?></h6>
-                                    <div class="vakComment"></div>
-                                </div>
+                            <div class="setComment">
+                                <div class="commentSection">
+                                <?php
+                                    //deze functie haalt alle comments van een task op, $r['id'] is in dit geval de id van een task
+                                    $comment = new Comment();
+                                    $comments = $comment->getComments($r['id']);
+                                    //in deze foreach worden alle comments uitgelezen, elke comment heeft een tekst, een firstname en een lastname van de user die ze heeft gepost
+                                    foreach($comments as $k => $c) {
+                                ?>
+                                <h6 class="nameUserComment">
+                                    <?php echo $c["firstname"].' '.$c["lastname"]; ?>
+                                </h6>
+                                <p class="textComment">
+                                    <?php echo $c['comment'];?>
+                                </p>
+                                <?php } ?>
+                            </div>
+                            <div class="vakComment">
+                                <input type="hidden" class="userid" value="<?php echo $_SESSION['user']['id'];?>">
+                                <input type="hidden" class="taskid" value="<?php echo $r['id'];?>">
+                                <!-- Hier heb ik 2 inputvelden toegevoegd, alleen maar om ze in javascript te kunnen gebruiken -->
+                                <!--  -->
+                                <input type="hidden" class="firstnameComment" value="<?php echo $_SESSION['user']['firstname'];?>">
+                                <input type="hidden" class="lastnameComment" value="<?php echo $_SESSION['user']['lastname'];?>">
+                            </div>
+ 
                                 <textarea class="form-control commentPost" placeholder="write a comment..." rows="1"></textarea>
-                                <input type="submit" class="btn btn-secondary postBtn" value="Post"></input>
-
+                                <input type="submit" class="btn btn-secondary postBtn commentBtn" value="Post">
+                            </div>
                             </div> <!--  media-body -->
                             <br>
                         </li>

@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	
+	// ---------------------
+	// DELETE LIST
+	// ---------------------
 	$('input.deleteList').on('click', function(e){
 		e.preventDefault();
 			var list_id = $(this).data('list_id');
@@ -15,7 +19,9 @@ $(document).ready(function(){
 				};
 			});
 	})
-
+	// ---------------------
+	// CREATE LIST
+	// ---------------------
 	$('input.listBtn').on('click', function(e){
 		// als je een submit knop hebt refresht de pagina --> e.preventDefault(); om te vermijden
 		e.preventDefault();
@@ -64,4 +70,45 @@ $(document).ready(function(){
 			};
 		});
 	})
+	// ---------------------
+	// CREATE COMMENT
+	// ---------------------
+	$('input.commentBtn').on('click', function(e){
+        // als je een submit knop hebt refresht de pagina --> e.preventDefault(); om te vermijden
+        e.preventDefault();
+        //Haal textfield input en id op uit de home
+        var userid = $('.userId').val();
+        var taskid = $('.taskId').val();
+        var comment = $('.commentPost').val();
+        var firstname = $('.firstnameComment').val();
+        var lastname = $('.lastnameComment').val();
+       
+        console.log(userid, taskid, comment, firstname, lastname);
+        //Verzend id en text input naar ajax/CommentCreate.php
+        $.ajax({
+            type:'POST',
+            url:'ajax/commentCreate.php',
+            //check post --> ajax/commentCreate.php
+            data: {
+                userid:userid,
+                taskid:taskid,
+                comment:comment
+            }
+        }).done(function(response){
+            console.log(response);
+            //response is het antwoord van ajax/CommentCreate.php
+            if(response.code===200){
+                //er gebeurt alleen iets als de code 200 is, wat ik dus gebruikt hebben voor het geslaagd toevoegen van een lijst
+                //voeg de nieuwe lijst toe als het geslaagd is in de databank
+                //modal verbergen
+                //$('.modal-list').modal('toggle');
+                console.log(response);
+                //input veld leeg maken
+                $('.commentPost').val('');
+				//toevoegen aan html lijstje
+				//prepend voeg het bovenaan toe
+                $('.setComment').prepend('<h6 class="nameUserComment">'+firstname+' '+lastname+'</h6><p>'+response.comment+'</p>');
+            };     
+        });
+    })
 })

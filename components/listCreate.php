@@ -16,8 +16,8 @@
                     </div>
                 </div>   
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-secondary taskBtn listBtn" value="Add List"></input>
-                    <input type="submit"  class="btn btn-secondary" data-dismiss="modal" value="Close"></input>
+                    <input type="submit" class="btn btn-secondary taskBtn listBtn" value="Add List">
+                    <input type="submit"  class="btn btn-secondary" data-dismiss="modal" value="Close">
                 </div>
             </div>
         </div>
