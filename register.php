@@ -13,10 +13,10 @@
         if ($_POST['password'] == $_POST['passwordRepeat'] ) {
 
             $user = new User();
-            $user->setFirstname($_POST['firstname']);
-            $user->setLastName($_POST['lastname']);
-            $user->setEmail($email);
-            $user->setPassword($_POST['password']);
+            $user->setFirstname(htmlspecialchars($_POST['firstname']));
+            $user->setLastName(htmlspecialchars($_POST['lastname']));
+            $user->setEmail(htmlspecialchars($email));
+            $user->setPassword(htmlspecialchars($_POST['password']));
 
             if (empty ($_POST['firstname']) ) {
                 $error = "Give your firstname please.";

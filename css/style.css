@@ -298,20 +298,27 @@ button.todo_button, button.done_button {
     width: 70px;
     cursor: pointer;
   }
-  button.todo_button:hover, button.done_button:hover {
+  .done_button { 
     background: #7cbe7f;
+    color: white;
+    text-align: center;
+    width: 70px;
+    cursor: pointer;
+  }
+.todo_button:hover, .done_button:hover {
+    background: #7d797b;
   }
   /* 
   als er op de todo button is gedrukt wil ik deze knop weg
   */
-  button.todo_button {
+.todo_button {
     display: inline;
   }
-  .favorite button.todo_button {
+  .favorite .todo_button {
     display: none;
   }
   
-  button.done_button {
+.done_button {
     display: none;
   }
   .favorite button.done_button {

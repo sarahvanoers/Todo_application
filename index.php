@@ -8,8 +8,8 @@
         $password = $_POST['password'];
 
         $user = new User();
-        $user->setEmail($email);
-        $user->setPassword($password);
+        $user->setEmail(htmlspecialchars($email));
+        $user->setPassword(htmlspecialchars($password));
 
         if ($user->canILogin() ) {
             $user->login();

@@ -66,10 +66,15 @@
                 <a class="nav-item nav-link" href="listCreate.php" data-toggle="modal" data-target="#exampleModalCenter2">Add list &plus; </a>
                 <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list appendList">
+               
                 <?php foreach($result as $key => $r) {
+                  
+                   echo '<a href=" detail.php" >';
                    echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
+                   echo '</a>';
                 }          
                 ?>
+                </a>
                 </ul>   
             </div>
             
@@ -82,9 +87,10 @@
                         
                             <div class="media-body">
                             
-                                <button class="todo_button">ToDo</button>
-                                <button class="done_button">Done</button>
-
+                            <div class="statusBtn">
+                                <input type="submit" class="todo_button" value="ToDo">
+                                <input type="submit" class="done_button" vaulue="Done">
+                            </div>
                             <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
                                 <?php 
@@ -93,15 +99,15 @@
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                             </span>
-                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>">
+                            
+                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo htmlspecialchars($r["list_title"]) ?>">
 
                             <p class="titleTask"> 
-                              <span class="textTask">Title task:</span> <?php echo $r["title"]; ?> <br>
-                              <span class="textTask">Working hours:</span> <?php echo $r["working_hours"]; ?>
-
+                              <span class="textTask">Title task:</span> <?php echo htmlspecialchars($r["title"]); ?> <br>
+                              <span class="textTask">Working hours:</span> <?php echo htmlspecialchars($r["working_hours"]); ?>
                             </p>
                             <div class="setComment">
-                                <div class="commentSection">
+                            <div class="commentSection">
                                 <?php
                                     //deze functie haalt alle comments van een task op, $r['id'] is in dit geval de id van een task
                                     $comment = new Comment();
@@ -110,10 +116,11 @@
                                     foreach($comments as $k => $c) {
                                 ?>
                                 <h6 class="nameUserComment">
-                                    <?php echo $c["firstname"].' '.$c["lastname"]; ?>
+                                    <?php echo htmlspecialchars($c["firstname"].' '.$c["lastname"]); ?>
                                 </h6>
+                               
                                 <p class="textComment">
-                                    <?php echo $c['comment'];?>
+                                    <?php echo htmlspecialchars($c['comment']);?>
                                 </p>
                                 <?php } ?>
                             </div>
@@ -121,14 +128,12 @@
                                 <input type="hidden" class="userid" value="<?php echo $_SESSION['user']['id'];?>">
                                 <input type="hidden" class="taskid" value="<?php echo $r['id'];?>">
                                 <!-- Hier heb ik 2 inputvelden toegevoegd, alleen maar om ze in javascript te kunnen gebruiken -->
-                                <!--  -->
                                 <input type="hidden" class="firstnameComment" value="<?php echo $_SESSION['user']['firstname'];?>">
                                 <input type="hidden" class="lastnameComment" value="<?php echo $_SESSION['user']['lastname'];?>">
                             </div>
- 
                                 <textarea class="form-control commentPost" placeholder="write a comment..." rows="1"></textarea>
                                 <input type="submit" class="btn btn-secondary postBtn commentBtn" value="Post">
-                            </div>
+                            </div> <!-- commentSection-->
                             </div> <!--  media-body -->
                             <br>
                         </li>

@@ -82,7 +82,7 @@
         public function getComments($id)
         {
             $conn = Db::getInstance();
-           
+            // hier koppel ik de comment, de user en de taak aan elkaar
             $statement = $conn->prepare("select comment.comment, users.firstname, users.lastname from comment inner join users on comment.user_id = users.id inner join task on comment.task_id = task.id where task.id = :id order by comment.id DESC");
             $statement->bindParam(":id", $id);
            

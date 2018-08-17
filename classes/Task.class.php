@@ -7,7 +7,6 @@
         private $date;
         private $user_id;
         private $list_id;
-        private $status;
         public $results;
         
         public function getTitle()
@@ -64,17 +63,7 @@
 
                 return $this;
         }
-
-        public function getStatus()
-        {
-                return $this->status;
-        }
-        public function setStatus($status)
-        {
-                $this->status = $status;
-
-                return $this;
-        }
+        // CRUD CREATE
         public function create() {
             $conn = Db::GetInstance();
             // this --> omdat ik eerst setters gebruikt heb ga ik nu de instantie ophalen (get)
@@ -95,10 +84,8 @@
                 $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id order by task.date");
                 $statement->execute();
                 $results = $statement->fetchAll();
-
         
                 return $results;
         }
-            
     }
 ?> 

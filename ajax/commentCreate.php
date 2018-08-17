@@ -20,7 +20,7 @@
           'userid' => $userid,
           'taskid' => $taskid,
           'comment' => $comment,
-          'message' => "list has been added"
+          'message' => "comment has been added"
         ];
       }else{
       //NIET VERWIJDERD

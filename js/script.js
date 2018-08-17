@@ -110,5 +110,39 @@ $(document).ready(function(){
                 $('.setComment').prepend('<h6 class="nameUserComment">'+firstname+' '+lastname+'</h6><p>'+response.comment+'</p>');
             };     
         });
-    })
+	})
+	// ---------------------
+	// CREATE STATUS
+	// ---------------------
+	$('input.done_button').on('click', function(e){
+        // als je een submit knop hebt refresht de pagina --> e.preventDefault(); om te vermijden
+        e.preventDefault();
+        //Haal textfield input en id op uit de home
+        var done_button = $('.done_button').val();
+       
+        console.log(done_button,);
+        //Verzend id en text input naar ajax/CommentCreate.php
+        $.ajax({
+            type:'POST',
+            url:'ajax/statusCreate.php',
+            //check post --> ajax/commentCreate.php
+            data: {
+                userid:userid,
+                taskid:taskid,
+                status:status
+            }
+        }).done(function(response){
+            console.log(response);
+            //response is het antwoord van ajax/statusCreate.php
+            if(response.code===200){
+                //er gebeurt alleen iets als de code 200 is, wat ik dus gebruikt hebben voor het geslaagd toevoegen van een lijst
+                //voeg de nieuwe lijst toe als het geslaagd is in de databank
+                
+                console.log(response);
+				//prepend voeg het bovenaan toe
+                $('.statusBtn').attr('<button class="done_button">'+response.status+'</button>');
+			
+			};     
+        });
+	})
 })
