@@ -227,7 +227,7 @@ li {
 }
 .nameUser {
     color: #ed8330;
-    margin-left: 3%;
+    margin-left: -5%;
 }
 .right {
     width: 60%;
@@ -291,39 +291,29 @@ li {
         HOME: TODO DONE BUTTON
 -------------------------------
 */
-button.todo_button, button.done_button {
+.todo_button {
     background: #eb5e4e;
     color: white;
     text-align: center;
-    width: 70px;
+    width: 60px;
     cursor: pointer;
+    float:left;
   }
   .done_button { 
     background: #7cbe7f;
     color: white;
     text-align: center;
-    width: 70px;
+    width: 60px;
     cursor: pointer;
+    float:left;
   }
+.done_button {
+    visibility: hidden;
+}
 .todo_button:hover, .done_button:hover {
     background: #7d797b;
   }
-  /* 
-  als er op de todo button is gedrukt wil ik deze knop weg
-  */
-.todo_button {
-    display: inline;
-  }
-  .favorite .todo_button {
-    display: none;
-  }
-  
-.done_button {
-    display: none;
-  }
-  .favorite button.done_button {
-    display: inline;
-  }
+
   .comment-wrapper {
       display: block;
   }

@@ -3,7 +3,7 @@
     include_once('../classes/Status.class.php');
     if (!empty($_POST) ) {
             $userid = $_POST['userid'];
-            $taskid = $_POST['taskid'];
+            $taskid = $_POST['userid'];
             $todo_done = $_POST['todo_done'];
             $status = new Status();
             //voer functie uit in Lists.class.php (create())
@@ -16,7 +16,7 @@
                 $response = [
                     'code' => 200,
                     'userid' => $userid,
-                    'taskid' => $taskid,
+                    'taskid' => $userid,
                     'todo_done' => $todo_done,
                     'message' => "status has been added"
                 ];
@@ -24,9 +24,9 @@
                 //NIET VERWIJDERD
                 $response = [
                     'code' => 500,
-                    'userid' => null,
-                    'taskid' => null,
-                    'todo_done' => null,
+                    'userid' => $userid,
+                    'taskid' => $userid,
+                    'todo_done' => $todo_done,
                     'message' => "something went wrong"
                 ];
             };

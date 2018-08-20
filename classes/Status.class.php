@@ -52,7 +52,7 @@
                 return $this;
         }
         // CRUD CREATE
-        public function createStatus() {
+        public function createStatus($userid,$taskid,$todo_done) {
             $conn = Db::GetInstance();
             $statement = $conn->prepare("insert into todoDone(user_id, task_id, todo_done) values(:user_id, :task_id, :todo_done)");
             $statement->bindParam(":user_id", $userid);
@@ -78,10 +78,10 @@
                 }
 
                 return $obj;
-                //stuur object terug naar ajax/listCreate.php
+                //stuur object terug naar ajax/statusCreate.php
         }
         
-            // CRUD DELETE
+        // CRUD DELETE
         public function delete($id) {
             $conn = Db::GetInstance();
             

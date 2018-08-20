@@ -114,22 +114,20 @@ $(document).ready(function(){
 	// ---------------------
 	// CREATE STATUS
 	// ---------------------
-	$('input.done_button').on('click', function(e){
+	$('button.done_button').on('click', function(e){
         // als je een submit knop hebt refresht de pagina --> e.preventDefault(); om te vermijden
         e.preventDefault();
         //Haal textfield input en id op uit de home
         var done_button = $('.done_button').val();
        
         console.log(done_button,);
-        //Verzend id en text input naar ajax/CommentCreate.php
+        //Verzend id en text input naar ajax/statusCreate.php
         $.ajax({
             type:'POST',
             url:'ajax/statusCreate.php',
-            //check post --> ajax/commentCreate.php
+            //check post --> ajax/statusCreate.php
             data: {
-                userid:userid,
-                taskid:taskid,
-                status:status
+                status:done_buttontatus
             }
         }).done(function(response){
             console.log(response);
@@ -140,9 +138,28 @@ $(document).ready(function(){
                 
                 console.log(response);
 				//prepend voeg het bovenaan toe
-                $('.statusBtn').attr('<button class="done_button">'+response.status+'</button>');
+                $('.statusBtn').attr('<button class="done_button">'+response.done_button+'</button>');
 			
 			};     
         });
+	})
+	// ---------------------
+	// DELETE STATUS
+	// ---------------------
+	$('button.todo_button').on('click', function(e){
+		e.preventDefault();
+			var status_id = $(this).data('status_id');
+			console.log(status_id);
+			$.ajax({
+				type:'POST',
+				url:'ajax/statusDelete.php',
+				data: {id:status_id}
+			}).done(function(response){
+				if(response.code===200){
+					//selecteer de input met die data attribuut, en verwijder het buitenste element
+					$('*[data-list_id="'+response.id+'"]').parent().remove();
+					location.reload(); //page refresh in javascript
+				};
+			});
 	})
 })

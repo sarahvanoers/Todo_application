@@ -30,8 +30,7 @@
     <!-- Bootstrap core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- Form  CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -69,9 +68,8 @@
                
                 <?php foreach($result as $key => $r) {
                   
-                   echo '<a href=" detail.php" >';
-                   echo '<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
-                   echo '</a>';
+                   echo '<a>'.'<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
+               
                 }          
                 ?>
                 </a>
@@ -88,8 +86,8 @@
                             <div class="media-body">
                             
                             <div class="statusBtn">
-                                <input type="submit" class="todo_button" value="ToDo">
-                                <input type="submit" class="done_button" vaulue="Done">
+                                <button type="submit" class="btn todo_button" href="#" value=""  data-list_id=" <?php $r["id"] ?>">ToDo</button>
+                                <button type="submit" class="btn done_button" href="#" value="" data-list_id=" <?php $r["id"] ?>">Done</button>
                             </div>
                             <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
@@ -100,9 +98,10 @@
                                 <small class="text-muted"><?php echo $timestring;?></small>
                             </span>
                             
-                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo htmlspecialchars($r["list_title"]) ?>">
+                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>">
 
                             <p class="titleTask"> 
+                                
                               <span class="textTask">Title task:</span> <?php echo htmlspecialchars($r["title"]); ?> <br>
                               <span class="textTask">Working hours:</span> <?php echo htmlspecialchars($r["working_hours"]); ?>
                             </p>
