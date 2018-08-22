@@ -3,7 +3,6 @@
 
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
-
     
 ?><html lang="en">
 <head>
