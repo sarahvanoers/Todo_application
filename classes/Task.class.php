@@ -87,5 +87,20 @@
         
                 return $results;
         }
+        
+        // delete to databank CRUD 
+
+        public function delete($id) {
+                $conn = Db::GetInstance();
+        
+                $statement = $conn->prepare("delete from task where id = :id");
+                $statement->bindParam(":id", $id);
+
+                $result = $statement->execute();
+
+        
+
+        return $result;
+    }
     }
 ?> 

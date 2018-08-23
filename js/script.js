@@ -127,7 +127,7 @@ $(document).ready(function(){
             url:'ajax/statusCreate.php',
             //check post --> ajax/statusCreate.php
             data: {
-                status:done_buttontatus
+                status:done_button
             }
         }).done(function(response){
             console.log(response);
@@ -157,7 +157,26 @@ $(document).ready(function(){
 			}).done(function(response){
 				if(response.code===200){
 					//selecteer de input met die data attribuut, en verwijder het buitenste element
-					$('*[data-list_id="'+response.id+'"]').parent().remove();
+					$('*[data-todo_id="'+response.id+'"]').remove();
+					location.reload(); //page refresh in javascript
+				};
+			});
+	})
+	// ---------------------
+	// DELETE TASK
+	// ---------------------
+	$('input.deleteTask').on('click', function(e){
+		e.preventDefault();
+			var task_id = $(this).data('task_id');
+			console.log(task_id);
+			$.ajax({
+				type:'POST',
+				url:'ajax/taskDelete.php',
+				data: {id:task_id}
+			}).done(function(response){
+				if(response.code===200){
+					//selecteer de input met die data attribuut, en verwijder het buitenste element
+					$('*[data-task_id="'+response.id+'"]').remove();
 					location.reload(); //page refresh in javascript
 				};
 			});

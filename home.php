@@ -86,8 +86,8 @@
                             <div class="media-body">
                             
                             <div class="statusBtn">
-                                <button type="submit" class="btn todo_button" href="#" value=""  data-list_id=" <?php $r["id"] ?>">ToDo</button>
-                                <button type="submit" class="btn done_button" href="#" value="" data-list_id=" <?php $r["id"] ?>">Done</button>
+                                <button type="submit" class="btn todo_button" href="#" value=""  data-todo_id=" <?php $r["id"] ?>">ToDo</button>
+                                <button type="submit" class="btn done_button" href="#" value="" data-done_id=" <?php $r["id"] ?>">Done</button>
                             </div>
                             <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
@@ -96,6 +96,7 @@
                                     $timestring = $date->getTimestring($r['date']);
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
+                                <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php $r["id"] ?>" value="&times;">
                             </span>
                             
                             <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>">
