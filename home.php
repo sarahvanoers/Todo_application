@@ -96,7 +96,7 @@
                                     $timestring = $date->getTimestring($r['date']);
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
-                                <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php $r["id"] ?>" value="&times;">
+                                <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php echo $r['id'] ?>" value="&times;">
                             </span>
                             
                             <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>">
