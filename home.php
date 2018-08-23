@@ -8,6 +8,7 @@
     include_once("classes/Task.class.php");
     include_once("classes/Date.class.php");
     include_once("classes/Comment.class.php");
+    include_once("classes/Status.class.php");
 
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
@@ -86,8 +87,13 @@
                             <div class="media-body">
                             
                             <div class="statusBtn">
-                                <button type="submit" class="btn todo_button" href="#" value=""  data-todo_id=" <?php $r["id"] ?>">ToDo</button>
-                                <button type="submit" class="btn done_button" href="#" value="" data-done_id=" <?php $r["id"] ?>">Done</button>
+                                <?php
+                                    $status = new Status();
+                                    $result = $status->checkIfDone($_SESSION['user']['id'],$r["id"]);
+                                    //als het result true is, dan is die class gelijk aan taskdone, anders is het niks
+                                    $result ? $done = 'taskDone' : $done = null;
+                                ?>
+                                <button type="submit" class="btn done_button #doneTodo <?php echo $done ?>" href="#" value="" data-done_id='<?php echo $r["id"] ?>'>Todo</button>
                             </div>
                             <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
@@ -97,9 +103,10 @@
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                                 <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php echo $r['id'] ?>" value="&times;">
+                                <input type="submit" href="taskUpdate.php" class="updateTask" data-update_id=" <?php echo $r['id']; ?>" value="&#8635;">
                             </span>
                             
-                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"] ?>">
+                            <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"]; ?>">
 
                             <p class="titleTask"> 
                                 
@@ -107,7 +114,7 @@
                               <span class="textTask">Working hours:</span> <?php echo htmlspecialchars($r["working_hours"]); ?>
                             </p>
                             <div class="setComment">
-                            <div class="commentSection">
+                            <div class="commentSection" data-comments='<?php echo $r["id"] ?>'>
                                 <?php
                                     //deze functie haalt alle comments van een task op, $r['id'] is in dit geval de id van een task
                                     $comment = new Comment();

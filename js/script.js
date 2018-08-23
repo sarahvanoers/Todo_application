@@ -77,11 +77,11 @@ $(document).ready(function(){
         // als je een submit knop hebt refresht de pagina --> e.preventDefault(); om te vermijden
         e.preventDefault();
         //Haal textfield input en id op uit de home
-        var userid = $('.userId').val();
-        var taskid = $('.taskId').val();
-        var comment = $('.commentPost').val();
-        var firstname = $('.firstnameComment').val();
-        var lastname = $('.lastnameComment').val();
+	var userid = $(this).parent().find('.userId').val();
+	var taskid = $(this).parent().find('.taskId').val();
+	var comment = $(this).parent().find('.commentPost').val();
+	var firstname = $(this).parent().find('.firstnameComment').val();
+	var lastname = 	$(this).parent().find('.lastnameComment').val();
        
         console.log(userid, taskid, comment, firstname, lastname);
         //Verzend id en text input naar ajax/CommentCreate.php
@@ -102,23 +102,24 @@ $(document).ready(function(){
                 //voeg de nieuwe lijst toe als het geslaagd is in de databank
                 //modal verbergen
                 //$('.modal-list').modal('toggle');
-                console.log(response);
+                console.log($('*[data-comments="' + response.task_id + '"]'));
                 //input veld leeg maken
-                $('.commentPost').val('');
+				$('.commentPost').val('');
 				//toevoegen aan html lijstje
 				//prepend voeg het bovenaan toe
-                $('.setComment').prepend('<h6 class="nameUserComment">'+firstname+' '+lastname+'</h6><p>'+response.comment+'</p>');
+				$('*[data-comments= "' + response.taskid +'"]').prepend('<h6 class="nameUserComment">'+firstname+' '+lastname+'</h6><p>'+response.comment+'</p>');
+				//$(this).parent().find('.setComment').prepend('<h6 class="nameUserComment">'+firstname+' '+lastname+'</h6><p>'+response.comment+'</p>');
             };     
         });
 	})
 	// ---------------------
-	// CREATE STATUS
+	// CREATE STATUS -- DONE TODO BUTTON
 	// ---------------------
 	$('button.done_button').on('click', function(e){
         // als je een submit knop hebt refresht de pagina --> e.preventDefault(); om te vermijden
         e.preventDefault();
         //Haal textfield input en id op uit de home
-        var done_button = $('.done_button').val();
+        var done_button = $(this).data('done_id');
        
         console.log(done_button,);
         //Verzend id en text input naar ajax/statusCreate.php
@@ -135,33 +136,15 @@ $(document).ready(function(){
             if(response.code===200){
                 //er gebeurt alleen iets als de code 200 is, wat ik dus gebruikt hebben voor het geslaagd toevoegen van een lijst
                 //voeg de nieuwe lijst toe als het geslaagd is in de databank
-                
-                console.log(response);
-				//prepend voeg het bovenaan toe
-                $('.statusBtn').attr('<button class="done_button">'+response.done_button+'</button>');
-			
-			};     
+               
+				console.log(response);
+				
+				// data)done_id is net hetzelfde als in de html 
+				$('*[data-done_id="'+response.taskid+'"]').addClass('taskDone');
+				//document.getElementById("doneTodo").value = "Done";
+            };    
         });
-	})
-	// ---------------------
-	// DELETE STATUS
-	// ---------------------
-	$('button.todo_button').on('click', function(e){
-		e.preventDefault();
-			var status_id = $(this).data('status_id');
-			console.log(status_id);
-			$.ajax({
-				type:'POST',
-				url:'ajax/statusDelete.php',
-				data: {id:status_id}
-			}).done(function(response){
-				if(response.code===200){
-					//selecteer de input met die data attribuut, en verwijder het buitenste element
-					$('*[data-todo_id="'+response.id+'"]').remove();
-					location.reload(); //page refresh in javascript
-				};
-			});
-	})
+    })
 	// ---------------------
 	// DELETE TASK
 	// ---------------------

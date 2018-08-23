@@ -295,32 +295,40 @@ li {
     background: none;
     border: none;
     cursor: pointer;
-    padding-left: 20%;
+    float:right;
+}
+.updateTask {
+    font-size: 2rem;
+    font-weight: 200;
+    line-height: 1;
+    color: #85c9db !important;
+    text-shadow: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-top:10px; 
 }
 /*
 -------------------------------
         HOME: TODO DONE BUTTON
 -------------------------------
 */
-.todo_button {
-    background: #eb5e4e;
+
+.done_button { 
+    /*background-color: #7cbe7f;*/
+    background-color: #ed7669;
     color: white;
     text-align: center;
     width: 60px;
     cursor: pointer;
-    float:left;
+    
   }
-  .done_button { 
-    background: #7cbe7f;
-    color: white;
-    text-align: center;
+  .taskDone {
+    background-color: #7cbe7f!important;
     width: 60px;
-    cursor: pointer;
-    float:left;
-  }
-.done_button {
-    visibility: hidden;
+    display: block;
 }
+
 .todo_button:hover, .done_button:hover {
     background: #7d797b;
   }

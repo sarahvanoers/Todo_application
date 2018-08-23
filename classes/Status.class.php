@@ -51,48 +51,59 @@
 
                 return $this;
         }
-        // CRUD CREATE
-        public function createStatus($userid,$taskid,$todo_done) {
-            $conn = Db::GetInstance();
-            $statement = $conn->prepare("insert into todoDone(user_id, task_id, todo_done) values(:user_id, :task_id, :todo_done)");
-            $statement->bindParam(":user_id", $userid);
-            $statement->bindParam(":task_id", $taskid);
-            $statement->bindParam(":todo_done", $todo_done);
-            
-            $statement->execute();
-
-            //Als het geslaagd is -> $result = true, anders false
-            if($result){
-            //het is geslaagd want $result = true
+         // CRUD CREATE
+        public function createStatus($taskid) {
+                session_start();
+                $conn = Db::GetInstance();
+                $userid = $_SESSION['user']['id'];
+                $isDone = $this->checkIfDone($userid,$taskid);
+                
+                if(!$isDone){
+                $done = true;
+                $statement = $conn->prepare("insert into todoDone(user_id, task_id, todo_done) values(:user_id, :task_id, :todo_done)");
+                $statement->bindParam(":user_id", $userid);
+                $statement->bindParam(":task_id", $taskid);
+                $statement->bindParam(":todo_done", $done);
+               
+                $result = $statement->execute();
+     
+                //Als het geslaagd is -> $result = true, anders false
+                if($result){
+                //het is geslaagd want $result = true
                 $obj = [
                     'result'=>$result,
                     'statusid'=>$conn->lastInsertId()
                     //ik geef mee aan mijn object dat de lijst toegevoegd is, en welk id deze heeft
                 ];
                 }else{
-                    $obj = [
-                        'result'=>$result,
-                        'statusid'=>null
-                        //er ging iets mis, er is geen lijst toegevoegd, mijn id bestaat niet
-                    ];                           
+                   $obj = [
+                            'result'=>$result,
+                            'statusid'=>null
+                            //er ging iets mis, er is geen lijst toegevoegd, mijn id bestaat niet
+                   ];                          
                 }
-
+     
                 return $obj;
                 //stuur object terug naar ajax/statusCreate.php
+                }
+     
+            }
+     
+        public function checkIfDone($userid,$taskid){
+                $conn = Db::GetInstance();
+                $done = true;
+                $statement = $conn->prepare("select * from todoDone where user_id = :user_id and task_id = :task_id and todo_done = 1");
+                $statement->bindParam(":user_id", $userid);
+                $statement->bindParam(":task_id", $taskid);
+               
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+     
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
         }
-        
-        // CRUD DELETE
-        public function delete($id) {
-            $conn = Db::GetInstance();
-            
-            $statement = $conn->prepare("delete from todoDone where id = :id");
-            $statement->bindParam(":id", $id);
-    
-            $result = $statement->execute();
-    
-            
-    
-            return $result;
-        }
-    }
+}
 ?>
