@@ -138,10 +138,13 @@ $(document).ready(function(){
                 //voeg de nieuwe lijst toe als het geslaagd is in de databank
                
 				console.log(response);
-				
+				// verandert de tekst in de button 
+				// maar bij refresh is het terug weg nakijken!
+				$("#btn_done").html('Done');
+
 				// data)done_id is net hetzelfde als in de html 
 				$('*[data-done_id="'+response.taskid+'"]').addClass('taskDone');
-				//document.getElementById("doneTodo").value = "Done";
+				
             };    
         });
     })

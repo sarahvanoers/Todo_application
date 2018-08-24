@@ -227,7 +227,7 @@ li {
 }
 .nameUser {
     color: #ed8330;
-    margin-left: -5%;
+    margin-left: 5%;
 }
 .right {
     width: 60%;
@@ -321,7 +321,7 @@ li {
     text-align: center;
     width: 60px;
     cursor: pointer;
-    
+    float: left;
   }
   .taskDone {
     background-color: #7cbe7f!important;

@@ -93,7 +93,7 @@
                                     //als het result true is, dan is die class gelijk aan taskdone, anders is het niks
                                     $result ? $done = 'taskDone' : $done = null;
                                 ?>
-                                <button type="submit" class="btn done_button #doneTodo <?php echo $done ?>" href="#" value="" data-done_id='<?php echo $r["id"] ?>'>Todo</button>
+                                <button type="submit" id="btn_done" class="btn done_button doneTodo <?php echo $done ?>" href="#" value="" data-done_id='<?php echo $r["id"] ?>'>Todo</button>
                             </div>
                             <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
