@@ -22,6 +22,8 @@
     
     include_once("components/listCreate.php"); 
     include_once("components/taskCreate.php");
+    include_once("components/taskUpdate.php");
+
 
  ?><html lang="en">
 <head>
@@ -103,7 +105,8 @@
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                                 <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php echo $r['id'] ?>" value="&times;">
-                                <input type="submit" href="taskUpdate.php" class="updateTask" data-update_id=" <?php echo $r['id']; ?>" value="&#8635;">
+                                <a class="updateTask" href="taskUpdate.php" data-toggle="modal" data-target="#exampleModalCenter3" data-task_id=" <?php echo $r['id'] ?>">&#8635;</a>
+
                             </span>
                             
                             <input type="submit" class="btn btn-outline-primary tagList" value="<?php echo $r["list_title"]; ?>">

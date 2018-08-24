@@ -141,6 +141,7 @@ $(document).ready(function(){
 				// verandert de tekst in de button 
 				// maar bij refresh is het terug weg nakijken!
 				$("#btn_done").html('Done');
+				//$('*[data-done_id="'+response.taskid+'"]').html('Done');
 
 				// data)done_id is net hetzelfde als in de html 
 				$('*[data-done_id="'+response.taskid+'"]').addClass('taskDone');

@@ -1,7 +1,7 @@
 <?php
     include_once("Db.class.php");
 
-    class Task {
+class Task {
         private $title;
         private $working_hours;
         private $date;
@@ -100,7 +100,22 @@
 
         
 
-        return $result;
-    }
-    }
+                return $result;
+        }
+    // update task CRUD
+        public function update(){
+
+                $conn = db::getInstance();
+                $statement = $conn->prepare("update task set title = :title, working_hours = :working_hours , date = :date, list_id = :list_id WHERE  user_id = :user_id");
+                $statement->bindParam(':title', $this->title);
+                $statement->bindParam(':working_hours', $this->working_hours);
+                $statement->bindParam(':date', $this->date);
+                $statement->bindParam(":user_id", $_SESSION['user']['id']);
+                $statement->bindParam(":list_id", $this->list_id);
+                $result = $statement->execute();
+        
+        
+                return $result;
+        }
+}
 ?> 
