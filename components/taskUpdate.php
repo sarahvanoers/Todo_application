@@ -3,10 +3,12 @@
 
     if(!empty($_POST)){
         if(!empty($_POST['updateTask'])){
+            $taskId = $_POST['taskId'];
             $changeTitle = $_POST['change_title'];
             $change_working_hours = $_POST['change_working_hours'];
             $change_date = $_POST['change_dateOfTheDeadline'];
             $list_id =$_POST['list_id'];
+           
     
            
                 $task = new Task();
@@ -14,8 +16,8 @@
                 $task->setWorking_hours($change_working_hours);
                 $task->setDate($change_date);
                 $task->setList_id($list_id);
-    
-                $task->update();
+                
+                $task = $task->update($taskId);
 
         }
     }
@@ -34,9 +36,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <input type="hidden" class="taskId" name="taskId" value="">
                         <label for="exampleInput">Change title</label>
                         <input type="text" class="form-control" id="exampleInput"  name="change_title">
-
+                        
                         <label for="exampleInput">Change working hours</label>
                         <input type="text" class="form-control" id="exampleInput"  name="change_working_hours">
 

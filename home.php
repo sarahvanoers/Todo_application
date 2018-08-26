@@ -105,7 +105,7 @@
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                                 <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php echo $r['id'] ?>" value="&times;">
-                                <a class="updateTask" href="taskUpdate.php" data-toggle="modal" data-target="#exampleModalCenter3" data-task_id=" <?php echo $r['id'] ?>">&#8635;</a>
+                                <a class="updateTask" href="taskUpdate.php" data-toggle="modal" data-target="#exampleModalCenter3" data-task_id="<?php echo $r['id'] ?>">&#8635;</a>
 
                             </span>
                             

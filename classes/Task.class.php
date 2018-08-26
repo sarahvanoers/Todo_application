@@ -103,19 +103,36 @@ class Task {
                 return $result;
         }
     // update task CRUD
-        public function update(){
-
+        public function update($id){
                 $conn = db::getInstance();
-                $statement = $conn->prepare("update task set title = :title, working_hours = :working_hours , date = :date, list_id = :list_id WHERE  user_id = :user_id");
+
+                $statement = $conn->prepare("update task set title = :title, working_hours = :working_hours, date = :date, list_id = :list_id WHERE  id = :id");
                 $statement->bindParam(':title', $this->title);
                 $statement->bindParam(':working_hours', $this->working_hours);
                 $statement->bindParam(':date', $this->date);
-                $statement->bindParam(":user_id", $_SESSION['user']['id']);
-                $statement->bindParam(":list_id", $this->list_id);
+                $statement->bindParam(':list_id', $this->list_id);
+                $statement->bindParam(':id',$id);
+
+
                 $result = $statement->execute();
         
         
                 return $result;
+        }
+
+        public function getTaskById($id){
+                $conn = db::getInstance();
+
+                $statement = $conn->prepare("select * from task where id = :id");
+                $statement->bindParam(':id',$id);
+
+
+                $statement->execute();
+        
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+                return $result;
+                //deze functie geeft het resultaat terug als ze wordt opgeroepen
         }
 }
 ?> 

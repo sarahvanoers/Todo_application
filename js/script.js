@@ -168,4 +168,39 @@ $(document).ready(function(){
 				};
 			});
 	})
+
+	$('#exampleModalCenter3').on('show.bs.modal', function(e) {
+
+		console.log('modal is open');
+		//get data-id attribute of the clicked element
+		var taskId = $(e.relatedTarget).data('task_id');
+		console.log(taskId);
+		//populate the textbox
+		$(e.currentTarget).find('input[name="taskId"]').val(taskId);
+
+		// https://stackoverflow.com/questions/10626885/passing-data-to-a-bootstrap-modal
+		$.ajax({
+			type:'POST',
+			url:'ajax/getTask.php',
+			// deze naam kies jezelf (key) {} is een object, en in een object zit
+			// {
+			// 	"naam" : "inhoud"
+			// }
+			data: {taskid:taskId}
+		}).done(function(response){
+			if(response){
+				console.log(response)
+
+				// //selecteer de input met die data attribuut, en verwijder het buitenste element
+				// $('*[data-task_id="'+response.id+'"]').remove();
+				// location.reload(); //page refresh in javascript
+				$('input[name="change_title"]').val(response.title);
+				$('input[name="change_working_hours"]').val(response.working_hours);
+				$('input[name="change_dateOfTheDeadline"]').val(response.date);
+				$('input[name="list_id"]').val(parseInt(response.list_id));
+
+			};
+		});
+
+	});
 })
