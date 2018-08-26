@@ -134,5 +134,20 @@ class Task {
                 return $result;
                 //deze functie geeft het resultaat terug als ze wordt opgeroepen
         }
+
+        public function getTasksByListId($id){
+                $conn = db::getInstance();
+
+                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id where task.list_id = :id order by task.date");
+                $statement->bindParam(':id',$id);
+
+
+                $statement->execute();
+        
+                $result = $statement->fetchAll();
+        
+                return $result;
+                //deze functie geeft het resultaat terug als ze wordt opgeroepen
+        }        
 }
 ?> 

@@ -9,12 +9,17 @@
     include_once("classes/Date.class.php");
     include_once("classes/Comment.class.php");
     include_once("classes/Status.class.php");
-
+    $url=strtok($_SERVER["REQUEST_URI"],'?');
     $tasks_lists = new Lists();
     $result = $tasks_lists->result();
 
     $task = new Task();
-    $resultTask = $task->result();
+    if(!empty($_GET)){
+        $listid = (int)$_GET['list'];
+        $resultTask = $task->getTasksByListId($listid);
+    }else{
+        $resultTask = $task->result();
+    }
     //print_r( $resultTask);
 
     //var_dump($_SESSION['user']['id']);
@@ -55,6 +60,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav navbar-right">
+                <a class="nav-item nav-link" href="newAdmin.php" data-toggle="modal" data-target="#exampleModalCenter4">Add new admin</a>
                 <a class="nav-item nav-link" href="taskCreate.php" data-toggle="modal" data-target="#exampleModalCenter">Add Task</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
             </div>
@@ -68,10 +74,10 @@
                 <a class="nav-item nav-link" href="listCreate.php" data-toggle="modal" data-target="#exampleModalCenter2">Add list &plus; </a>
                 <!-- ADD LIST -->
                 <ul class="list-group list-group-flush list appendList">
-               
+                <?php echo '<a href="http://'.$_SERVER['HTTP_HOST'].$url.'"><li class="list-group-item">All</li></a>' ?>
                 <?php foreach($result as $key => $r) {
-                  
-                   echo '<a>'.'<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li>';
+                    //https://stackoverflow.com/questions/6969645/how-to-remove-the-querystring-and-get-only-the-url
+                   echo '<a href="http://'.$_SERVER['HTTP_HOST'].$url.'?list='.$r["id"].'">'.'<li class="list-group-item">' . $r["title"] . '<span class="listAlign"><input type="submit" href="listDelete.php" class="deleteList" data-list_id="'.$r["id"].'" value="&times;"></span></li></a>';
                
                 }          
                 ?>
