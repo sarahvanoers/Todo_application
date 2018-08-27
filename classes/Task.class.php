@@ -81,7 +81,7 @@ class Task {
         public function result(){
                 $conn = Db::GetInstance();
                 //deze query haalt tegelijk alle taken op samen met hun lijst en de gebruiker die ze heeft gemaakt
-                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id order by task.date");
+                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, users.isAdmin, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id order by task.date");
                 $statement->execute();
                 $results = $statement->fetchAll();
         
@@ -138,7 +138,7 @@ class Task {
         public function getTasksByListId($id){
                 $conn = db::getInstance();
 
-                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id where task.list_id = :id order by task.date");
+                $statement = $conn->prepare("select task.*, users.firstname, users.lastname, users.isAdmin, list.title as list_title from task inner join list on task.list_id = list.id inner join users on task.user_id = users.id where task.list_id = :id order by task.date");
                 $statement->bindParam(':id',$id);
 
 
@@ -148,6 +148,18 @@ class Task {
         
                 return $result;
                 //deze functie geeft het resultaat terug als ze wordt opgeroepen
-        }        
+        }   
+        
+        public function uploadFile($taskId,$fileDestination){
+                $conn = db::getInstance();
+
+                $statement = $conn->prepare("insert into files(user_id,task_id,path) values (:user_id,:task_id,:path)");
+                $statement->bindParam(':user_id',$_SESSION['user']['id']);
+                $statement->bindParam(':task_id',$taskId);
+                $statement->bindParam(':path',$fileDestination);
+
+
+                $statement->execute();
+        }
 }
 ?> 

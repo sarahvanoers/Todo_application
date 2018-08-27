@@ -20,6 +20,37 @@
     }else{
         $resultTask = $task->result();
     }
+
+    if(!empty($_FILES['file'])){
+        $file = $_FILES['file'];
+        $fileName = $_FILES['file']['name'];
+        $fileTmpName = $_FILES['file']['tmp_name'];
+        $fileSize = $_FILES['file']['size'];
+        $fileError = $_FILES['file']['error'];
+        $fileType = $_FILES['file']['type'];
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowed = array('pdf');
+
+        if (in_array($fileActualExt, $allowed)) {
+            if ($fileError === 0) {
+                if ($fileSize < 10000000) {
+                    $fileNameNew = 'task-'.$_SESSION['user']['id'].'-'.$_POST['fileTaskId'] . "." . $fileActualExt;
+                    if(!file_exists('uploads/' .$fileNameNew)){    
+                        $fileDestination = 'uploads/' . $fileNameNew;
+                        echo($fileDestination);
+                        move_uploaded_file($fileTmpName, $fileDestination);
+
+                        $taskId = $_POST['fileTaskId'];
+                        
+                        $uploadfile = $task->uploadFile($taskId,$fileDestination);
+                    }else{
+                        echo('file already exists');
+                    }
+            }
+        }
+    }
+}
     //print_r( $resultTask);
 
     //var_dump($_SESSION['user']['id']);
@@ -28,6 +59,7 @@
     include_once("components/listCreate.php"); 
     include_once("components/taskCreate.php");
     include_once("components/taskUpdate.php");
+    include_once("components/newAdmin.php");
 
 
  ?><html lang="en">
@@ -42,7 +74,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -60,7 +92,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav navbar-right">
-                <a class="nav-item nav-link" href="newAdmin.php" data-toggle="modal" data-target="#exampleModalCenter4">Add new admin</a>
+                <a class="nav-item nav-link" href="newAdmin.php" data-toggle="modal" data-target="#exampleModalCenter4">admin</a>
                 <a class="nav-item nav-link" href="taskCreate.php" data-toggle="modal" data-target="#exampleModalCenter">Add Task</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
             </div>
@@ -100,18 +132,21 @@
                                     $result = $status->checkIfDone($_SESSION['user']['id'],$r["id"]);
                                     //als het result true is, dan is die class gelijk aan taskdone, anders is het niks
                                     $result ? $done = 'taskDone' : $done = null;
+                                    // om de tekst te kunnen veranderen anders was het weg als je de pagina refreshte  
+                                    $result ? $btnText = 'Done' : $btnText = 'ToDo';
+                                    $adminstr = $r["isAdmin"] ? '<i class="fas fa-award admin"></i>'  : null;
                                 ?>
-                                <button type="submit" id="btn_done" class="btn done_button doneTodo <?php echo $done ?>" href="#" value="" data-done_id='<?php echo $r["id"] ?>'>Todo</button>
+                                <button type="submit" id="btn_done" class="btn done_button doneTodo <?php echo $done ?>" href="#" value="" data-done_id='<?php echo $r["id"] ?>'><?php echo $btnText ?></button>
                             </div>
-                            <strong class="nameUser"><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
+                            <strong class="nameUser"><?php echo $adminstr . "   " ?><?php echo $r["firstname"] . " " . $r["lastname"] ?></strong>
                             <span class="text-muted pull-right">
                                 <?php 
                                     $date = new Date();
-                                    $timestring = $date->getTimestring($r['date']);
+                                    $timestring = $date->getTimestring($r ['date']);
                                 ;?>
                                 <small class="text-muted"><?php echo $timestring;?></small>
                                 <input type="submit" href="taskDelete.php" class="deleteTask" data-task_id=" <?php echo $r['id'] ?>" value="&times;">
-                                <a class="updateTask" href="taskUpdate.php" data-toggle="modal" data-target="#exampleModalCenter3" data-task_id="<?php echo $r['id'] ?>">&#8635;</a>
+                                <input type="submit" class="updateTask" href="taskUpdate.php" data-toggle="modal" data-target="#exampleModalCenter3" value="&#8635;" data-task_id="<?php echo $r['id'] ?>"/>
 
                             </span>
                             
@@ -122,6 +157,18 @@
                               <span class="textTask">Title task:</span> <?php echo htmlspecialchars($r["title"]); ?> <br>
                               <span class="textTask">Working hours:</span> <?php echo htmlspecialchars($r["working_hours"]); ?>
                             </p>
+                            <form action="" method="post" enctype="multipart/form-data">
+                            <div class="input-group uploadFile">
+                                <div class="custom-file">
+                                    <input type="hidden" class="btn btn-secondary" name="fileTaskId" value="<?php echo $r['id']?>"/>
+                                    <input type="file" name="file" class="custom-file-input" id="inputGroupFile04 file" aria-describedby="inputGroupFileAddon04">
+                                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <input class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04" "Upload"/>
+                                </div>
+                                </div> 
+                            </form>
                             <div class="setComment">
                             <div class="commentSection" data-comments='<?php echo $r["id"] ?>'>
                                 <?php

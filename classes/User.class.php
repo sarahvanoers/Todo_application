@@ -142,6 +142,37 @@
             return $user;
         }
 
+        public function getNormalUsers(){
+            $conn= Db::getInstance();
+            $statement = $conn->prepare("SELECT * FROM users WHERE isAdmin=0");
+            $statement->execute();
+            $result = $statement->fetchAll();
+            return $result;
+        }
+
+        public function createAdmin($id){
+            $conn= Db::getInstance();
+            $statement = $conn->prepare("UPDATE users set isAdmin = 1 WHERE id = :id");
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+        }
+        public function getAdmins() {
+            $conn= Db::getInstance();
+            $statement = $conn->prepare("SELECT * FROM users WHERE isAdmin=1 and id != :id");
+            $statement->bindParam(':id',$_SESSION['user']['id']);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            return $result;
+        }
+
+        public function deleteAdmin($id){
+            $conn= Db::getInstance();
+            $statement = $conn->prepare("UPDATE users set isAdmin = 0 WHERE id = :id");
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+        }
+
+
   
     }
     // via databank ervoor gezorgt dat er geen taak meer kan zijn als de user is verwijderd

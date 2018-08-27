@@ -140,7 +140,7 @@ $(document).ready(function(){
 				console.log(response);
 				// verandert de tekst in de button 
 				// maar bij refresh is het terug weg nakijken!
-				$("#btn_done").html('Done');
+				$('*[data-done_id="'+response.taskid+'"]').text('Done');
 				//$('*[data-done_id="'+response.taskid+'"]').html('Done');
 
 				// data)done_id is net hetzelfde als in de html 
@@ -203,4 +203,5 @@ $(document).ready(function(){
 		});
 
 	});
+	
 })

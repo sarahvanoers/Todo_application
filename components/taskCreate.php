@@ -37,13 +37,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInput">Title</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="title">
+                        <input type="text" class="form-control" id="exampleInput"  name="title"/>
 
                         <label for="exampleInput">Working hours</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="working_hours">
+                        <input type="text" class="form-control" id="exampleInput"  name="working_hours"/>
 
                         <label for="exampleInput">Date of the deadline</label>
-                        <input type="date" class="form-control" id="exampleInput"  name="dateOfTheDeadline">
+                        <input type="date" class="form-control" id="exampleInput"  name="dateOfTheDeadline"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInput">add to personal list</label>

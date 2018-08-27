@@ -36,15 +36,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="hidden" class="taskId" name="taskId" value="">
+                        <input type="hidden" class="taskId" name="taskId" value=""/>
                         <label for="exampleInput">Change title</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="change_title">
+                        <input type="text" class="form-control" id="exampleInput"  name="change_title"/>
                         
                         <label for="exampleInput">Change working hours</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="change_working_hours">
+                        <input type="text" class="form-control" id="exampleInput"  name="change_working_hours"/>
 
                         <label for="exampleInput">Change date of the deadline</label>
-                        <input type="date" class="form-control" id="exampleInput"  name="change_dateOfTheDeadline">
+                        <input type="date" class="form-control" id="exampleInput"  name="change_dateOfTheDeadline"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInput">add to personal list</label>
