@@ -12,9 +12,9 @@
     
            
                 $task = new Task();
-                $task->setTitle($changeTitle);
-                $task->setWorking_hours($change_working_hours);
-                $task->setDate($change_date);
+                $task->setTitle(htmlspecialchars($changeTitle));
+                $task->setWorking_hours(htmlspecialchars($change_working_hours));
+                $task->setDate(htmlspecialchars($change_date));
                 $task->setList_id($list_id);
                 
                 $task = $task->update($taskId);

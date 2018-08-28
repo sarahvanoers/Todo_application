@@ -13,11 +13,11 @@
             //$status =$_POST['status'];
             
             $task = new Task();
-            $task->setTitle(test_input($title));
-            $task->setWorking_hours(test_input($working_hours));
-            $task->setDate(test_input($date));
+            $task->setTitle(htmlspecialchars($title));
+            $task->setWorking_hours(htmlspecialchars($working_hours));
+            $task->setDate(htmlspecialchars($date));
             //$task->setUser_id($user_id);
-            $task->setList_id(test_input($list_id));
+            $task->setList_id(htmlspecialchars($list_id));
             //$task->setStatus($status);
 
             $task->create();

@@ -163,8 +163,8 @@
 
                             <p class="titleTask"> 
                                 
-                              <span class="textTask">Title task:</span> <?php echo test_input($r["title"]); ?> <br>
-                              <span class="textTask">Working hours:</span> <?php echo test_input($r["working_hours"]); ?>
+                              <span class="textTask">Title task:</span> <?php echo htmlspecialchars($r["title"]); ?> <br>
+                              <span class="textTask">Working hours:</span> <?php echo htmlspecialchars($r["working_hours"]); ?>
                             </p>
                             <form action="" method="post" enctype="multipart/form-data">
                             <div class="input-group uploadFile">
