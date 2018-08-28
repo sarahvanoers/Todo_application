@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="exampleInput">Title</label>
                         <input type="hidden" class="userId" value="<?php echo $_SESSION['user']['id'];?>">
-                        <input type="text" class="form-control listTitle" id="exampleInput"  name="title">        
+                        <input type="text" class="form-control listTitle" id="exampleInput1"  name="title">        
                     </div>
                 </div>   
                 <?php if(isset($error)): ?>

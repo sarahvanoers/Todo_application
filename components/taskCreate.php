@@ -13,11 +13,11 @@
             //$status =$_POST['status'];
             
             $task = new Task();
-            $task->setTitle($title);
-            $task->setWorking_hours($working_hours);
-            $task->setDate($date);
+            $task->setTitle(test_input($title));
+            $task->setWorking_hours(test_input($working_hours));
+            $task->setDate(test_input($date));
             //$task->setUser_id($user_id);
-            $task->setList_id($list_id);
+            $task->setList_id(test_input($list_id));
             //$task->setStatus($status);
 
             $task->create();
@@ -42,13 +42,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInput">Title</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="title"/>
+                        <input type="text" class="form-control" id="exampleInput1"  name="title"/>
 
                         <label for="exampleInput">Working hours</label>
-                        <input type="text" class="form-control" id="exampleInput"  name="working_hours"/>
+                        <input type="text" class="form-control" id="exampleInput2"  name="working_hours"/>
 
                         <label for="exampleInput">Date of the deadline</label>
-                        <input type="date" class="form-control" id="exampleInput"  name="dateOfTheDeadline"/>
+                        <input type="date" class="form-control" id="exampleInput3"  name="dateOfTheDeadline"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInput">add to personal list</label>

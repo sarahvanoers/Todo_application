@@ -3,6 +3,14 @@
     if(empty($_SESSION)){
         header('Location: index.php');
     };
+    /* XXS attacks  (corss site scripting) */
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+
     include_once("classes/User.class.php");
     include_once("classes/Lists.class.php");
     include_once("classes/Task.class.php");
@@ -132,7 +140,8 @@
                                     $result = $status->checkIfDone($_SESSION['user']['id'],$r["id"]);
                                     //als het result true is, dan is die class gelijk aan taskdone, anders is het niks
                                     $result ? $done = 'taskDone' : $done = null;
-                                    // om de tekst te kunnen veranderen anders was het weg als je de pagina refreshte  
+                                    // om de tekst te kunnen veranderen anders was het weg als je de pagina refreshte
+                                    // https://davidwalsh.name/php-ternary-examples hier heb ik 
                                     $result ? $btnText = 'Done' : $btnText = 'ToDo';
                                     $adminstr = $r["isAdmin"] ? '<i class="fas fa-award admin"></i>'  : null;
                                 ?>
@@ -154,8 +163,8 @@
 
                             <p class="titleTask"> 
                                 
-                              <span class="textTask">Title task:</span> <?php echo htmlspecialchars($r["title"]); ?> <br>
-                              <span class="textTask">Working hours:</span> <?php echo htmlspecialchars($r["working_hours"]); ?>
+                              <span class="textTask">Title task:</span> <?php echo test_input($r["title"]); ?> <br>
+                              <span class="textTask">Working hours:</span> <?php echo test_input($r["working_hours"]); ?>
                             </p>
                             <form action="" method="post" enctype="multipart/form-data">
                             <div class="input-group uploadFile">
@@ -179,11 +188,11 @@
                                     foreach($comments as $k => $c) {
                                 ?>
                                 <h6 class="nameUserComment">
-                                    <?php echo htmlspecialchars($c["firstname"].' '.$c["lastname"]); ?>
+                                    <?php echo test_input($c["firstname"].' '.$c["lastname"]); ?>
                                 </h6>
                                
                                 <p class="textComment">
-                                    <?php echo htmlspecialchars($c['comment']);?>
+                                    <?php echo test_input($c['comment']);?>
                                 </p>
                                 <?php } ?>
                             </div>

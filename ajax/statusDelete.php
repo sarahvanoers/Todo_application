@@ -5,7 +5,7 @@ if (!empty($_POST) ) {
     $id = $_POST['id'];
     $status = new Status();
     $result = $lists->delete($id);
-    //als de taak verwijderd is maak ik een object met een juiste code (200), anders toon ik een error
+    //als de todo verwijderd is maak ik een object met een juiste code (200), anders toon ik een error
     if($result){
         //GELUKT
         $response = [

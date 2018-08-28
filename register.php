@@ -12,10 +12,10 @@
                 if ($_POST['password'] == $_POST['passwordRepeat'] ) {
 
                 $user = new User();
-                $user->setFirstname(htmlspecialchars($_POST['firstname']));
-                $user->setLastName(htmlspecialchars($_POST['lastname']));
-                $user->setEmail(htmlspecialchars($email));
-                $user->setPassword(htmlspecialchars($_POST['password']));
+                $user->setFirstname(test_input($_POST['firstname']));
+                $user->setLastName(test_input($_POST['lastname']));
+                $user->setEmail(test_input($email));
+                $user->setPassword(test_input($_POST['password']));
                 
                     if($user->register() ) {
                         $user->login();

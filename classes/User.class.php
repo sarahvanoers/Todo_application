@@ -180,10 +180,63 @@
             $statement->bindParam(':id', $id);
             $statement->execute();
         }
-
-
+        //https://www.w3schools.com/php/php_form_validation.asp
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
   
     }
+
+    /*
+    Cross-site scripting (XSS) is een type kwetsbaarheid 
+    voor computerbeveiliging die meestal wordt aangetroffen in webtoepassingen. 
+    XSS stelt aanvallers in staat client-side script te injecteren 
+    in webpagina's die door andere gebruikers worden bekeken.
+
+    function test input vermijd dat er geen kwaadaardige javascript code kan geschreven worden.
+
+    betekent dat gebruikers hun eigen code in de HTML kunnen injecteren. 
+    Dat kan ertoe leiden dat er bijvoorbeeld cookies van administrators, 
+    die belangrijke informatie bevatten, uitgelezen kunnen worden. 
+    Dat is natuurlijk iets wat je wilt voorkomen.
+
+    Dat is erg simpel, je gebruikt gewoon de htmlspecialchars functie van PHP. 
+    Deze zet "vreemde" tekens om naar tekens die ongevaarlijk zijn voor de broncode.
+    */
+
+
+    /*
+    SQL INJECTION PDO 
+    Om de input van de user te beveiligen gebruiken we PDO
+    Zo kunnen ze u databank niet hacken
+
+    Zodra u input begint te verwerken van gebruikers is enige voorzichtigheid op zijn plaats.
+    Een groot gevaar bij het rechtstreeks verwerken van gebruikersdata is SQL injectie4.
+
+    SELECT * FROM tblUsers WHERE login = 'Jansen' AND paswoord = 'test' OR 'a' = 'a';
+    “a”=”a” is altijd waar en we zouden deze gebruiker zomaar toegang verschaffen 
+    tot onze applictie, zonder dat de gebruiker hiervoor 
+    een geldige login en wachtwoord combinatie heeft. --> onbeveiligde query met PDO niet mogelijk
+
+    stel dat een gebruiker geen toegang wenst te verschaffen tot uw applicatie, 
+    maar dat hij of zij uw ganse applicatie wil plat leggen. 
+    Dan zou een slimme hacker commando’s als “drop database xxx” kunnen toevoegen aan uw queries.
+    
+    Als u gebruik maakt van PDO of prepared statements 
+    dan dient u zich geen zorgen te maken over SQL Injection. 
+    PDO zorgt er bovendien voor dat we onze applicatie kunnen schrijven, 
+    onafhankelijk van het onderliggende databank systeem.
+
+    waardoor het mogelijk wordt om met één en dezelfde schrijfwijze 
+    meer dan 10 verschillende databanksoorten aan te spreken. 
+    Onder meer MS SQL Server, PostgreSQL, Oracle en SQLite worden naast MySQL ondersteund.
+
+    */
+
+
     // via databank ervoor gezorgt dat er geen taak meer kan zijn als de user is verwijderd
     // als de lijst is verwijdert gaat de taak ook verwijderd worden
     // lijst --> taak = 1 op meer relatie 
