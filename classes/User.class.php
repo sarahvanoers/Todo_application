@@ -13,6 +13,9 @@
         }
         public function setFirstname($firstname)
         {
+            if( empty($firstname) ){
+                throw new Exception("Firstname cannot be empty.");
+            }
                 $this->firstname = $firstname;
 
                 return $this;
@@ -24,6 +27,9 @@
         }
         public function setLastname($lastname)
         {
+            if( empty($lastname) ){
+                throw new Exception("Lastname cannot be empty.");
+            }
                 $this->lastname = $lastname;
 
                 return $this;
@@ -35,6 +41,9 @@
         }
         public function setEmail($email)
         {
+            if( empty($email) ){
+                throw new Exception("Email cannot be empty.");
+            }
                 $this->email = $email;
 
                 return $this;

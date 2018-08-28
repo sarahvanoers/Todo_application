@@ -15,6 +15,10 @@ class Task {
         }
         public function setTitle($title)
         {
+        if( empty($title) ){
+                throw new Exception("Task title cannot be empty.");
+            }
+                
                 $this->title = $title;
 
                 return $this;
@@ -26,6 +30,9 @@ class Task {
         }
         public function setWorking_hours($working_hours)
         {
+                if( empty($working_hours) ){
+                        throw new Exception("Working hours cannot be empty.");
+                    }
                 $this->working_hours = $working_hours;
 
                 return $this;
@@ -37,6 +44,9 @@ class Task {
         }
         public function setDate($date)
         {
+                if( empty($date) ){
+                        throw new Exception("Deadline cannot be empty.");
+                    }
                 $this->date = $date;
 
                 return $this;

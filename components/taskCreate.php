@@ -3,6 +3,7 @@
 
 
     if (!empty($_POST) ) {
+        try { 
         if(!empty($_POST['createTask'])){
             $title = $_POST['title'];
             $working_hours = $_POST['working_hours'];
@@ -21,6 +22,10 @@
 
             $task->create();
         }
+    }
+    catch(Exception $e) {
+        $error = $e->getMessage();
+    }  
     }
     
 ?><form method="POST" class="form" id="popUp_task">
@@ -57,7 +62,12 @@
                            
                         </select>
                     </div>
-                </div>   
+                </div>  
+                <?php if(isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+                <?php endif; ?>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-secondary taskBtn" value="Add Task">
                     <input type="submit"  class="btn btn-secondary" data-dismiss="modal" value="Close">

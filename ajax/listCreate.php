@@ -2,6 +2,7 @@
     header('Content-Type: application/json');
     include_once('../classes/Lists.class.php');
     if (!empty($_POST) ) {
+       
             $title = $_POST['title'];
             $userid = $_POST['userid'];
             $lists = new Lists();
@@ -28,6 +29,6 @@
                 ];
             };
             echo json_encode($response);
-    }
+        }
     
 ?>

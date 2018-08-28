@@ -1,40 +1,34 @@
 <?php
     include_once("classes/User.class.php");
 
-    $error = "";
 
     if ( !empty($_POST) ) {
-        $error = "";
-        $email = $_POST['email'];
+        try {
+            $email = $_POST['email'];
+        
+            if (User::checkUser($email) == true) {
 
-        if (User::checkUser($email) == true) {
+                // als de twee ww overéén komen wordt er een nieuwe user aangemaakt.
+                if ($_POST['password'] == $_POST['passwordRepeat'] ) {
 
-        // als de twee ww overéén komen wordt er een nieuwe user aangemaakt.
-        if ($_POST['password'] == $_POST['passwordRepeat'] ) {
-
-            $user = new User();
-            $user->setFirstname(htmlspecialchars($_POST['firstname']));
-            $user->setLastName(htmlspecialchars($_POST['lastname']));
-            $user->setEmail(htmlspecialchars($email));
-            $user->setPassword(htmlspecialchars($_POST['password']));
-
-            if (empty ($_POST['firstname']) ) {
-                $error = "Give your firstname please.";
+                $user = new User();
+                $user->setFirstname(htmlspecialchars($_POST['firstname']));
+                $user->setLastName(htmlspecialchars($_POST['lastname']));
+                $user->setEmail(htmlspecialchars($email));
+                $user->setPassword(htmlspecialchars($_POST['password']));
+                
+                    if($user->register() ) {
+                        $user->login();
+                    } 
+                    
+                }      
             }
-            else if (empty ($_POST['lastname']) ) {
-                $error = "Give your lastname please.";
-            }
-            else {
-                if($user->register() ) {
-                    $user->login();
-                } 
-                else {
-                    $error = "That emailadress is already being used.";
-                }
-            }
-        }      
         }
+        catch(Exception $e) {
+			$error = $e->getMessage();
+        }    
     }
+    
 ?><html lang="en">
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,13 +57,13 @@
             
             <div class="form-group">
                 <label for="exampleInput"></label>
-                <input type="text" class="form-control" id="exampleInput" placeholder="Your first name" name="firstname">
+                <input type="text" class="form-control" id="exampleInputfirstname" placeholder="Your first name" name="firstname">
 
                 <label for="exampleInput"></label>
-                <input type="text" class="form-control" id="exampleInput" placeholder="Your last name" name="lastname">
+                <input type="text" class="form-control" id="exampleInputlastname" placeholder="Your last name" name="lastname">
 
                 <label for="exampleInputEmail1"></label>
-                <input type="email" class="form-control" id="exampleInput" placeholder="Your email" name="email">
+                <input type="email" class="form-control" id="exampleInputemail" placeholder="Your email" name="email">
 
                 <label for="exampleInputPassword1"></label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Your password" name ="password">
@@ -77,14 +71,16 @@
                 <label for="exampleInputPasswordConfirmation1"></label>
                 <input type="password" class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Repeat password" name ="passwordRepeat">
             </div>
-            <div class="form-group error">
-                <p>
-                   <php echo $error; ?>
-                </p>
-            </div>
+
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" id="register" value="Let's get started!"> <br>
                 <a class="registerLink" href="index.php">Oh, I already have one!</a>
+            </div>
+            <?php if(isset($error)): ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $error; ?>
+            </div>
+            <?php endif; ?>
             </div>
         </form>
     </div>

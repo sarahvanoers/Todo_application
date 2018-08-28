@@ -15,6 +15,11 @@
                         <input type="text" class="form-control listTitle" id="exampleInput"  name="title">        
                     </div>
                 </div>   
+                <?php if(isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+                <?php endif; ?>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-secondary taskBtn listBtn" value="Add List">
                     <input type="submit"  class="btn btn-secondary" data-dismiss="modal" value="Close">

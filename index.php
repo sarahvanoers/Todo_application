@@ -1,30 +1,27 @@
 <?php
     include_once("classes/User.class.php");
-
-    $error = "";
-
+    
     if (!empty($_POST) ) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        try { 
+            $email = $_POST['email'];
+            $password = $_POST['password'];
 
-        $user = new User();
-        $user->setEmail(htmlspecialchars($email));
-        $user->setPassword(htmlspecialchars($password));
+            $user = new User();
+            $user->setEmail(htmlspecialchars($email));
+            $user->setPassword(htmlspecialchars($password));
 
-        if ($user->canILogin() ) {
-            $user->login();
+            if ($user->canILogin() ) {
+                $user->login();
+            }
+            else {
+				$error = "<strong>Holy guacamole!</strong> You should check in on some of those fields below.";
+			}
         }
-        else {
-            $error = "sorry";
-        }
-        if (empty ($_POST['email']) ) {
-            $error = "";
-        }
-        else if (empty ($_POST['passowrd']) ) {
-            $error = "";
-        }
-
+        catch(Exception $e) {
+            $error = $e->getMessage();
+        }  
     }
+    
 ?><html lang="en">
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,19 +49,20 @@
     <h1 class="tekstRegister">Hello you, <br> Welcome back! Sign in.</h1>
         <div class="form-group">
             <label for="exampleInputEmail1"></label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" name="email">
         </div>
             <label for="exampleInputPassword1"></label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-            <div class="form-group error">
-                <p>
-                   <php echo $error; ?>
-                </p>
-            </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" id="register" value="Let's get started!"><br>
             <a class="loginLink" href="register.php">I'm new here, sign me in!</a>
         </div>
+        <?php if(isset($error)): ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $error; ?>
+            </div>
+            <?php endif; ?>
+            </div>
     </form>
     </div>
     </div>

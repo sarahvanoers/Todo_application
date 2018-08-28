@@ -59,7 +59,10 @@ GREY: #7d797b
         LOGIN REGISTER
 -------------------------------
 */
-
+.alert {
+    width: 60%;
+    margin-top: 5%;
+}
 .tekstRegister {
     color: #85c9db;
     margin-top: 2%;
@@ -69,6 +72,18 @@ GREY: #7d797b
     width: 60%;
 }
 #exampleInput {
+    width: 60%;
+}
+#exampleInputfirstname {
+    width: 60%;
+}
+#exampleInputlastname {
+    width: 60%;
+}
+#exampleInputemail {
+    width: 60%;
+}
+#exampleInputemail2 {
     width: 60%;
 }
 #exampleInputPassword1 {
@@ -156,7 +171,7 @@ a:hover {
 */
 .listOverview {
     color: #85c9db !important;
-    margin-left:8%;
+    text-align: center;
 } 
 .row {
     width: 100%;
@@ -210,6 +225,7 @@ li {
 .nav-link {
     display: block;
     padding: .5rem 1rem;
+    text-align: center;
 }
 .list-group-item  {
     color:#85c9db !important;

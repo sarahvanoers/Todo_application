@@ -36,6 +36,9 @@
     }
     public function setTitle($title)
     {
+        if( empty($title) ){
+            throw new Exception("List title cannot be empty.");
+        }
             $this->title = $title;
 
             return $this;
