@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Gegenereerd op: 27 aug 2018 om 12:03
+-- Gegenereerd op: 28 aug 2018 om 11:40
 -- Serverversie: 5.6.35
 -- PHP-versie: 7.1.8
 
@@ -141,7 +141,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `isAdmin`) VALUES
 (1, 'Sarah', 'Van Oers', 'test@test.be', '$2y$10$aqT3H4zESXPnKVP6X6sYheB7myjwM/cukrXJG5IFTI.FbVtbgdU7u', 1),
-(2, 'Steffi', 'Van Oers', 'hello@test.be', '$2y$10$fnjoYdOFR4zlNcGTrd303esuvl1hEfRyY1vfVM1whvO/cH6aa.hdy', 0);
+(2, 'Steffi', 'Van Oers', 'hello@test.be', '$2y$10$fnjoYdOFR4zlNcGTrd303esuvl1hEfRyY1vfVM1whvO/cH6aa.hdy', 0),
+(4, 'Robin', ' Sprenger', 'robinsprenger@icloud.com', '$2y$10$OJeTlZ16zT1XB2J/oC3HM.OEFKB7m3dwc3u/vMzrkTWdS/h/ihBv2', 0),
+(5, 'Lars ', 'Van Giels', 'larsvangiels@icloud.com', '$2y$10$upEwDuOuO5/KkajUwT0QcOv7wIh3mooGn0PoTugK6r97PLPlH8H.C', 0),
+(6, 'Daisy ', 'Van Loon', 'daisyvanloon@telenet.be', '$2y$10$/TINijdZ3H25Rc5aFcaxYORaXcAAZHMIxCO6TQxrAsaTiChZ9Mh5C', 0),
+(7, 'Jef', 'Van Oers', 'jefvanoers@telenet.be', '$2y$10$89Y1jyN6MHBCSdoLFuBaBeeHiWzy0YPZw3R4p07NJjLATzXdPD5V2', 0);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -204,7 +208,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT voor een tabel `list`
 --
 ALTER TABLE `list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT voor een tabel `task`
 --
@@ -219,7 +223,7 @@ ALTER TABLE `todoDone`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
