@@ -143,6 +143,7 @@
                                     // om de tekst te kunnen veranderen anders was het weg als je de pagina refreshte
                                     // https://davidwalsh.name/php-ternary-examples hier heb ik 
                                     $result ? $btnText = 'Done' : $btnText = 'ToDo';
+                                    // dit voegt de award toe als de gebruiker admin wordt
                                     $adminstr = $r["isAdmin"] ? '<i class="fas fa-award admin"></i>'  : null;
                                 ?>
                                 <button type="submit" id="btn_done" class="btn done_button doneTodo <?php echo $done ?>" href="#" value="" data-done_id='<?php echo $r["id"] ?>'><?php echo $btnText ?></button>

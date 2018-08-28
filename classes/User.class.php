@@ -235,7 +235,8 @@
     Onder meer MS SQL Server, PostgreSQL, Oracle en SQLite worden naast MySQL ondersteund.
 
     */
-
+    // PASSWORD HASHING
+    // https://www.linkedin.com/learning/search?keywords=password%20hashing%20php
 
     // via databank ervoor gezorgt dat er geen taak meer kan zijn als de user is verwijderd
     // als de lijst is verwijdert gaat de taak ook verwijderd worden
