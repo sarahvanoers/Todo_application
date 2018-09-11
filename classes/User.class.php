@@ -234,9 +234,18 @@
     meer dan 10 verschillende databanksoorten aan te spreken. 
     Onder meer MS SQL Server, PostgreSQL, Oracle en SQLite worden naast MySQL ondersteund.
 
+    Sessievariabelen lossen dit probleem op door gebruikersinformatie op te slaan 
+    voor gebruik op meerdere pagina's (bijv. Gebruikersnaam, favoriete kleur, enz.). 
+    Standaard duren sessievariabelen tot de gebruiker de browser sluit.
+
+
     */
     // PASSWORD HASHING
     // https://www.linkedin.com/learning/search?keywords=password%20hashing%20php
+
+   // md5 hash --> kan je via generators achterhalen. als de hacker het ww weet dan kan hij het zo invullen
+   // bcript --> gaat dat niet omdat het random data is 
+    // cost 12 
 
     // via databank ervoor gezorgt dat er geen taak meer kan zijn als de user is verwijderd
     // als de lijst is verwijdert gaat de taak ook verwijderd worden
